@@ -6,7 +6,7 @@ import com.yncrea.framework.services.DetailCommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-public class DetailCommandeController   implements IController<DetailCommande, Integer>  {
+public class DetailCommandeController   implements IController<DetailCommande, String>  {
 
 
     @Autowired
@@ -26,19 +26,19 @@ public class DetailCommandeController   implements IController<DetailCommande, I
 
     @Override
     @GetMapping("/api/detailCommande/{Id}")
-    public DetailCommande findOne(@PathVariable(name = "Id") Integer Id) {
+    public DetailCommande findOne(@PathVariable(name = "Id") String Id) {
         return detailCommandeService.findOne(Id);
     }
 
     @Override
     @PutMapping("/api/detailCommande/{Id}")
-    public DetailCommande update(@PathVariable(name = "Id") Integer Id, @RequestBody DetailCommande detailCommande) {
+    public DetailCommande update(@PathVariable(name = "Id") String Id, @RequestBody DetailCommande detailCommande) {
         return detailCommandeService.update(detailCommande);
     }
 
     @Override
     @DeleteMapping("/api/detailCommande/{Id}")
-    public void delete(@PathVariable(name = "Id") Integer Id) {
+    public void delete(@PathVariable(name = "Id") String Id) {
         detailCommandeService.delete(Id);
     }
 }

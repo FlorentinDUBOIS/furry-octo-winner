@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class CommandeController implements IController<Commande, Integer> {
+public class CommandeController implements IController<Commande, String> {
 
     @Autowired
     private CommandeService commandeService;
@@ -26,19 +26,19 @@ public class CommandeController implements IController<Commande, Integer> {
 
     @Override
     @GetMapping("/api/commande/{Id}")
-    public Commande findOne(@PathVariable(name = "Id") Integer Id) {
+    public Commande findOne(@PathVariable(name = "Id") String Id) {
         return commandeService.findOne(Id);
     }
 
     @Override
     @PutMapping("/api/commande/{Id}")
-    public Commande update(@PathVariable(name = "Id") Integer Id, @RequestBody Commande entity) {
+    public Commande update(@PathVariable(name = "Id") String Id, @RequestBody Commande entity) {
         return commandeService.update(entity);
     }
 
     @Override
     @DeleteMapping("/api/commande/{Id}")
-    public void delete(@PathVariable(name = "Id") Integer Id) {
+    public void delete(@PathVariable(name = "Id") String Id) {
         commandeService.delete(Id);
     }
 }

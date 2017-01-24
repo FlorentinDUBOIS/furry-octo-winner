@@ -1,4 +1,4 @@
-DROP TABLE `detail_commande`;
+DROP TABLE `detailcommande`;
 DROP TABLE `commande`;
 DROP TABLE `client`;
 DROP TABLE `article`;
@@ -20,7 +20,8 @@ CREATE TABLE `client` (
   `cp` varchar(10) NOT NULL,
   `adresse` varchar(128) NOT NULL,
   `email` varchar(64) NOT NULL,
-  `motdepasse` varchar(32) NOT NULL,
+  `salt` varchar(64) NOT NULL,
+  `hash` varchar(512) NOT NULL,
   `clientvalide` tinyint(1) NOT NULL,
   `clientbloque` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)

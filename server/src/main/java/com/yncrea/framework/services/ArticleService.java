@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ArticleService implements IService<Article, Integer> {
+public class ArticleService implements IService<Article, String> {
 
     @Autowired
     private ArticleRepository articleRepository;
@@ -27,7 +27,7 @@ public class ArticleService implements IService<Article, Integer> {
 
     @Override
     @Transactional
-    public Article findOne(Integer Id) {
+    public Article findOne(String Id) {
         return articleRepository.findOne(Id);
     }
 
@@ -39,7 +39,7 @@ public class ArticleService implements IService<Article, Integer> {
 
     @Override
     @Transactional
-    public void delete(Integer Id) {
+    public void delete(String Id) {
         articleRepository.delete(Id);
     }
 }

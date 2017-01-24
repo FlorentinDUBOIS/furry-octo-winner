@@ -10,9 +10,9 @@ public class Commande {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer Id;
+    private String Id;
 
-    @Column(name = "client_id")
+    @Column(name = "clientid")
     private Integer ClientId;
 
     @Column(name = "datecommande")
@@ -33,11 +33,11 @@ public class Commande {
     @Column(name = "commandeannulee")
     private Boolean commandeannulee;
 
-    public Integer getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         Id = id;
     }
 

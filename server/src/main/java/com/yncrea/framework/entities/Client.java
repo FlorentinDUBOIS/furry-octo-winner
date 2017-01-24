@@ -11,7 +11,7 @@ public class Client {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer Id;
+    private String Id;
 
     @Column(name = "nom")
     private String Nom;
@@ -45,11 +45,11 @@ public class Client {
     @Column(name = "clientbloque")
     private Boolean ClientBloque;
 
-    public Integer getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         Id = id;
     }
 

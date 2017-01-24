@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ClientService implements IService<Client, Integer> {
+public class ClientService implements IService<Client, String> {
 
     @Autowired
     private ClientRepository clientRepository;
@@ -26,7 +26,7 @@ public class ClientService implements IService<Client, Integer> {
 
     @Override
     @Transactional
-    public Client findOne(Integer Id) {
+    public Client findOne(String Id) {
         return clientRepository.findOne(Id);
     }
 
@@ -38,7 +38,7 @@ public class ClientService implements IService<Client, Integer> {
 
     @Override
     @Transactional
-    public void delete(Integer Id) {
+    public void delete(String Id) {
         clientRepository.delete(Id);
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class ArticleController  implements IController<Article, Integer> {
+public class ArticleController  implements IController<Article, String> {
 
     @Autowired
     private ArticleService articleService;
@@ -26,19 +26,19 @@ public class ArticleController  implements IController<Article, Integer> {
 
     @Override
     @GetMapping("/api/article/{Id}")
-    public Article findOne(@PathVariable(name = "Id") Integer Id) {
+    public Article findOne(@PathVariable(name = "Id") String Id) {
         return articleService.findOne(Id);
     }
 
     @Override
     @PutMapping("/api/article/{Id}")
-    public Article update(@PathVariable(name = "Id") Integer Id, @RequestBody Article article) {
+    public Article update(@PathVariable(name = "Id") String Id, @RequestBody Article article) {
         return articleService.update(article);
     }
 
     @Override
     @DeleteMapping("/api/article/{Id}")
-    public void delete(@PathVariable(name = "Id") Integer Id) {
+    public void delete(@PathVariable(name = "Id") String Id) {
         articleService.delete(Id);
     }
 }

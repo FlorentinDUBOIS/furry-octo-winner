@@ -9,7 +9,8 @@ CREATE TABLE client (
   adresse       VARCHAR(128),
   ville         VARCHAR(64),
   email         VARCHAR(64),
-  motdepasse  VARCHAR(128),
+  salt          VARCHAR(64),
+  hash          VARCHAR(512),
   clientvalide BOOLEAN,
   clientbloque BOOLEAN
 );

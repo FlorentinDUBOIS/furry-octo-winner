@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-public class DetailCommandeService  implements IService<DetailCommande, Integer> {
+public class DetailCommandeService  implements IService<DetailCommande, String> {
 
     @Autowired
     private DetailCommandeRepository detailCommandeRepository;
@@ -27,7 +27,7 @@ public class DetailCommandeService  implements IService<DetailCommande, Integer>
 
     @Override
     @Transactional
-    public DetailCommande findOne(Integer Id) {
+    public DetailCommande findOne(String Id) {
         return detailCommandeRepository.findOne(Id);
     }
 
@@ -39,7 +39,7 @@ public class DetailCommandeService  implements IService<DetailCommande, Integer>
 
     @Override
     @Transactional
-    public void delete(Integer Id) {
+    public void delete(String Id) {
         detailCommandeRepository.delete(Id);
     }
 }

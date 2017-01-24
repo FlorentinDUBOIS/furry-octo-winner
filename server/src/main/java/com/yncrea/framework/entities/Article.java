@@ -9,7 +9,7 @@ public class Article {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer Id;
+    private String Id;
 
     @Column(name = "nom")
     private String Nom;
@@ -23,11 +23,11 @@ public class Article {
     @Column(name = "description")
     private String Description ;
 
-    public Integer getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         Id = id;
     }
 

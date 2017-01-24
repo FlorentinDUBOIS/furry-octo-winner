@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class CommandeService implements IService<Commande, Integer> {
+public class CommandeService implements IService<Commande, String> {
 
     @Autowired
     private CommandeRepository commandeRepository;
@@ -26,7 +26,7 @@ public class CommandeService implements IService<Commande, Integer> {
 
     @Override
     @Transactional
-    public Commande findOne(Integer Id) {
+    public Commande findOne(String Id) {
         return commandeRepository.findOne(Id);
     }
 
@@ -38,7 +38,7 @@ public class CommandeService implements IService<Commande, Integer> {
 
     @Override
     @Transactional
-    public void delete(Integer Id) {
+    public void delete(String Id) {
         commandeRepository.delete(Id);
     }
 }
