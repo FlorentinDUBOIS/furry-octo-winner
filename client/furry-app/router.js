@@ -8,9 +8,9 @@ furryApp.config(function($stateProvider, $resourceProvider) {
       url: '/product',
       component: 'productsComponent',
       resolve: {
-        products: ['$Product', function($Product) {
+        products: function($Product) {
           return $Product.query().$promise;
-        }]
+        }
       }
     }
   ];

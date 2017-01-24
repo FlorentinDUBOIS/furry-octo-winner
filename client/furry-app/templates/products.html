@@ -1,1 +1,5 @@
 <h1>Liste des produits</h1>
+<pre>{{$ctrl.products}}</pre>
+<div ng-repeat="product in $ctrl.products">
+    <p>{{product.nom}}</p>
+</div>
