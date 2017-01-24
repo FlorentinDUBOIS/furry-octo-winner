@@ -1,5 +1,9 @@
 package com.yncrea.framework.entities;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 import javax.persistence.*;
 
 @Entity

@@ -1,12 +1,12 @@
 furryApp
-.component('helloComponent', {
+.component('productsComponent', {
 
   bindings: { 
-      user: '=' 
+      products: '=' 
   },
   template:  '<h1>{{$ctrl.user}}</h1>',
            
   controller: function() {
-    console.log("user: "+ this.user);
+    console.log("products: ", this.products);
   }
 });
