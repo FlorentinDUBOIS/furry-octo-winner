@@ -33,7 +33,7 @@ CREATE TABLE commande (
   commandeannulee BOOLEAN
 );
 
-CREATE TABLE detail_commande (
+CREATE TABLE detailcommande (
   id                UUID PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
   articleid        UUID,
   commandeid       UUID,
