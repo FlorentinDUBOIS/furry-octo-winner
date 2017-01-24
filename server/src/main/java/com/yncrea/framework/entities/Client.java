@@ -1,8 +1,5 @@
 package com.yncrea.framework.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-
 import javax.persistence.*;
 
 @Entity

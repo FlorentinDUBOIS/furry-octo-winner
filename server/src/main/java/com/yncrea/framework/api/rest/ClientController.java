@@ -11,26 +11,31 @@ public class ClientController implements IController<Client, Integer> {
     @Autowired
     private ClientService clientService;
 
+    @Override
     @GetMapping("/api/client")
     public Iterable<Client> find() {
         return clientService.find();
     }
 
+    @Override
     @PostMapping("/api/client")
     public Client create(@RequestBody Client client) {
         return clientService.create(client);
     }
 
+    @Override
     @GetMapping("/api/client/{Id}")
     public Client findOne(@PathVariable(name = "Id") Integer Id) {
         return clientService.findOne(Id);
     }
 
+    @Override
     @PutMapping("/api/client/{Id}")
     public Client update(@PathVariable(name = "Id") Integer Id, @RequestBody Client client) {
         return clientService.update(client);
     }
 
+    @Override
     @DeleteMapping("/api/client/{Id}")
     public void delete(@PathVariable(name = "Id") Integer Id) {
         clientService.delete(Id);
