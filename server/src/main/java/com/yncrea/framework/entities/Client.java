@@ -1,9 +1,7 @@
 package com.yncrea.framework.entities;
 
-<<<<<<< HEAD
-=======
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
->>>>>>> master
 import javax.persistence.*;
 
 @Entity
@@ -33,8 +31,13 @@ public class Client {
     @Column(name = "email")
     private String Email;
 
-    @Column(name = "motdepasse")
-    private String MotdePasse;
+    @JsonIgnore
+    @Column(name = "salt")
+    private String salt;
+
+    @JsonIgnore
+    @Column(name = "hash")
+    private String hash;
 
     @Column(name = "clientvalide")
     private Boolean ClientValide;
@@ -98,14 +101,6 @@ public class Client {
         Email = email;
     }
 
-    public String getMotdePasse() {
-        return MotdePasse;
-    }
-
-    public void setMotdePasse(String motdePasse) {
-        MotdePasse = motdePasse;
-    }
-
     public Boolean getClientValide() {
         return ClientValide;
     }
@@ -120,5 +115,21 @@ public class Client {
 
     public void setClientBloque(Boolean clientBloque) {
         ClientBloque = clientBloque;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 }
