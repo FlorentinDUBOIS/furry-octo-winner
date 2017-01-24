@@ -17,7 +17,7 @@ INSERT INTO commande (clientid, datecommande, tauxtva, moyenpaiement, etapecomma
     ( (SELECT id FROM client WHERE nom='dubois'), now(), 20.00, 'CB', 1, FALSE, FALSE);
 
 
-INSERT INTO detail_commande (articleid, commandeid, prixunitaireht, quantite)
+INSERT INTO detailcommande (articleid, commandeid, prixunitaireht, quantite)
   VALUES
     ((SELECT id FROM article WHERE nom='iphone 7'), (SELECT id FROM commande LIMIT 1), 1400, 2 ),
     ((SELECT id FROM article WHERE nom='iphone 6'), (SELECT id FROM commande LIMIT 1), 1000, 2 );
