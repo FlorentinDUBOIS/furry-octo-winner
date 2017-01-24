@@ -6,6 +6,7 @@ import com.yncrea.framework.services.CommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 public class CommandeController implements IController<Commande, String> {
 

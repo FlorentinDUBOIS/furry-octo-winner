@@ -5,6 +5,7 @@ import com.yncrea.framework.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 public class ClientController implements IController<Client, String> {
 
