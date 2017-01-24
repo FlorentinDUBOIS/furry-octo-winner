@@ -15,6 +15,32 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+
+DROP TABLE IF EXISTS `client`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `client` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nom` varchar(64) DEFAULT NULL,
+  `Prenom` varchar(64) DEFAULT NULL,
+  `Ville` varchar(64) DEFAULT NULL,
+  `CP` varchar(10) DEFAULT NULL,
+  `Adresse` varchar(128) DEFAULT NULL,
+  `Email` varchar(64) DEFAULT NULL,
+  `MotdePasse` varchar(32) DEFAULT NULL,
+  `ClientValide` tinyint(1) DEFAULT NULL,
+  `ClientBloque` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `client`
+--
+
+
+
 --
 -- Table structure for table `Article`
 --
@@ -100,27 +126,6 @@ CREATE TABLE `Detail_Commande` (
 -- Table structure for table `client`
 --
 
-DROP TABLE IF EXISTS `client`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `client` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Nom` varchar(64) DEFAULT NULL,
-  `Prenom` varchar(64) DEFAULT NULL,
-  `Ville` varchar(64) DEFAULT NULL,
-  `CP` varchar(10) DEFAULT NULL,
-  `Adresse` varchar(128) DEFAULT NULL,
-  `Email` varchar(64) DEFAULT NULL,
-  `MotdePasse` varchar(32) DEFAULT NULL,
-  `ClientValide` tinyint(1) DEFAULT NULL,
-  `ClientBloque` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `client`
---
 
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
 INSERT INTO `client` VALUES (1,'Dubois','Florentin','Brest','29200','3 rue bosquet','duboiflorentin@gmail.com','Aqwzsxedc,123',1,0);
