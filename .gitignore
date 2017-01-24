@@ -1,2 +1,8 @@
+
+# IntelliJ IDE
+/.idea/
+/server/.idea/
+/server/src/main/main.iml
+
 /server/src/main/resources/application.properties
 
