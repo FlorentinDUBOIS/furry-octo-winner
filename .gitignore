@@ -3,7 +3,11 @@
 /.idea/
 /server/.idea/
 /server/src/main/main.iml
+
+/server/.gradle
+
 /server/build
+
 
 /server/src/main/resources/application.properties
 
