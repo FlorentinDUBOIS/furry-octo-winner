@@ -3,10 +3,7 @@ package com.yncrea.framework.api.rest;
 import com.yncrea.framework.entities.Client;
 import com.yncrea.framework.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ClientController implements IController<Client, Integer> {
@@ -19,8 +16,23 @@ public class ClientController implements IController<Client, Integer> {
         return clientService.find();
     }
 
+    @PostMapping("/api/client")
+    public Client create(@RequestBody Client client) {
+        return clientService.create(client);
+    }
+
     @GetMapping("/api/client/{Id}")
     public Client findOne(@PathVariable(name = "Id") Integer Id) {
         return clientService.findOne(Id);
+    }
+
+    @PutMapping("/api/client/{Id}")
+    public Client update(@PathVariable(name = "Id") Integer Id, @RequestBody Client client) {
+        return clientService.update(client);
+    }
+
+    @DeleteMapping("/api/client/{Id}")
+    public void delete(@PathVariable(name = "Id") Integer Id) {
+        clientService.delete(Id);
     }
 }

@@ -18,8 +18,22 @@ public class ClientService implements IService<Client, Integer> {
     }
 
     @Transactional
+    public Client create(Client entity) {
+        return clientRepository.save(entity);
+    }
+
+    @Transactional
     public Client findOne(Integer Id) {
         return clientRepository.findOne(Id);
     }
 
+    @Transactional
+    public Client update(Client entity) {
+        return clientRepository.save(entity);
+    }
+
+    @Transactional
+    public void delete(Integer Id) {
+        clientRepository.delete(Id);
+    }
 }
