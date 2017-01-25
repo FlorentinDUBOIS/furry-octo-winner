@@ -9,7 +9,7 @@ public class DetailCommande {
 
     @Id
     @Column(name = "id")
-    private String Id;
+    private String id;
 
     @Column(name = "articleid ")
     private String articleid;
@@ -18,21 +18,21 @@ public class DetailCommande {
     private String commandeid ;
 
     @Column(name = "prixunitaireht")
-    private float PrixUnitaireHT ;
+    private float prixunitaireht ;
 
     @Column(name = "quantite")
     private Integer quantite ;
 
     public DetailCommande() {
-        Id = UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString();
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getArticleid() {
@@ -51,12 +51,12 @@ public class DetailCommande {
         this.commandeid = commandeid;
     }
 
-    public float getPrixUnitaireHT() {
-        return PrixUnitaireHT;
+    public float getPrixunitaireht() {
+        return prixunitaireht;
     }
 
-    public void setPrixUnitaireHT(float prixUnitaireHT) {
-        PrixUnitaireHT = prixUnitaireHT;
+    public void setPrixunitaireht(float prixunitaireht) {
+        this.prixunitaireht = prixunitaireht;
     }
 
     public Integer getQuantite() {
