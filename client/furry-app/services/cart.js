@@ -24,22 +24,29 @@ furryApp.factory('$Cart', function() {
 
     addArticle: (articleId) => {
         console.log(`Add to cart: ${articleId}`);
+
         let cart = loadExistingCart();
         if (cart.has(articleId)) {
-          cart.set(articleId, cart.get(articleId));
+          console.log('existing', cart.get(articleId));
+          cart.set(articleId, cart.get(articleId) + 1);
         } else {
+          console.log('Not existing', cart.get(articleId));
           cart.set(articleId, 1);
         }
-        saveCart(cart);
+        return saveCart(cart);
     },
     removeArticle: (articleId) => {
+      console.log(`Remove from cart: ${articleId}`);
+
+      let cart = loadExistingCart();
       if (cart.has(articleId)) {
-        if (cart.get(articleId) > 1) {
-          cart.set(cart.get(articleId) --);
+        let articleCount = cart.get(articleId);
+        if (articleCount > 1) {
+          cart.set(articleId, articleCount -1);
         } else {
           cart.delete(articleId);
         }
-        saveCart(cart);
+        return saveCart(cart);
       }
     },
     resumeCart: () => {

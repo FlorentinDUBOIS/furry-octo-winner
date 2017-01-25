@@ -21,10 +21,10 @@ furryApp
       }
 
       $scope.addToCart = (articleId) => {
-        $Cart.addArticle(articleId);
+        return $Cart.addArticle(articleId);
       };
       $scope.removeFromCart = (articleId) => {
-        $Cart.removeArticle(articleId);
+        return $Cart.removeArticle(articleId);
       }
   }
 });
