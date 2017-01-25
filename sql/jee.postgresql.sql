@@ -1,8 +1,11 @@
+
 --
 -- CREATE TABLE
 --
+DROP TABLE IF EXISTS detailcommande, commande, article, client ;
+
 CREATE TABLE client (
-  id            UUID PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
+  id            varchar(64) PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
   nom           VARCHAR(64),
   prenom        VARCHAR(64),
   cp            VARCHAR(10),
@@ -16,16 +19,16 @@ CREATE TABLE client (
 );
 
 CREATE TABLE article (
-  id                UUID PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
+  id                varchar(64) PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
   nom               VARCHAR(64),
   reference         VARCHAR(16),
-  prixunitaireht  FLOAT,
+  prixunitaireht    FLOAT,
   description       TEXT
 );
 
 CREATE TABLE commande (
-  id               UUID PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
-  clientid        UUID,
+  id              varchar(64) PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
+  clientid        varchar(64),
   datecommande    TIMESTAMP,
   tauxtva         FLOAT,
   moyenpaiement   CHAR(2),
@@ -35,11 +38,11 @@ CREATE TABLE commande (
 );
 
 CREATE TABLE detailcommande (
-  id                UUID PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
-  articleid        UUID,
-  commandeid       UUID,
-  prixunitaireht  FLOAT,
-  quantite          INTEGER
+  id               varchar(64) PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
+  articleid        varchar(64),
+  commandeid       varchar(64),
+  prixunitaireht   FLOAT,
+  quantite         INTEGER
 );
 
 --
@@ -49,11 +52,11 @@ ALTER TABLE commande
 ADD CONSTRAINT commande_client_id_fk
 FOREIGN KEY (clientid) REFERENCES client (id);
 
-ALTER TABLE detail_commande
+ALTER TABLE detailcommande
 ADD CONSTRAINT detail_commande_article_id_fk
 FOREIGN KEY (articleid) REFERENCES article (id);
 
-ALTER TABLE detail_commande
+ALTER TABLE detailcommande
 ADD CONSTRAINT detail_commande_commande_id_fk
 FOREIGN KEY (commandeid) REFERENCES commande (id);
 
@@ -71,4 +74,4 @@ CREATE INDEX CONCURRENTLY idx_article_ref
 CREATE INDEX CONCURRENTLY idx_article_name
   ON article(nom);
 CREATE INDEX CONCURRENTLY idx_detail_commande_commande
-  ON detail_commande(commandeid);
+  ON detailcommande(commandeid);

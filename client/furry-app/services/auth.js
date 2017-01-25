@@ -1,10 +1,7 @@
-furryApp.factory('authHttpInterceptor', function () {
+furryApp.factory('authHttpInterceptor', (jwtHelper) => {
   return {
     request: function (config) {
-      /*if (config.headers.Authorization === 'Bearer') {
-        config.headers.Authorization = 'Bearer ' + btoa(OAuth.accessToken);
-      }*/
-      let token = localStorage.getItem('logged');
+      let token = localStorage.getItem('lwt');
       if (!!token) {
         config.headers.Authorization = `JWT ${token}`;
       }

@@ -9,7 +9,16 @@ furryApp
 
     $scope.logIn = () => {
       console.log($scope.user);
-      $User.login()
+      $User.tryLogin($scope.user)
+      .then(() => {
+        $User.getInformations()
+        .then((user) => {
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      });
     }
   }
 });

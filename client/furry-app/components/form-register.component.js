@@ -9,7 +9,7 @@ furryApp
 
     $scope.register = () => {
       console.log($scope.user);
-      //$User.login()
+      $User.register($scope.user);
     }
   }
 });

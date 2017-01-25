@@ -33,25 +33,32 @@ furryApp.config(
           }
       }
     }, {
-          name: 'articleDetails',
-          url: '/article/:articleId',
-          component: 'articleDetailsComponent',
-          resolve: {
-              Article: function ($Article, $transition$) {
-                  return $Article.get({
-                      articleId: $transition$.params().articleId
-                  }).$promise;
-              }
-          }
-      }, {
-      name: 'contact',
-          url: '/contactUs',
-          component: 'contactComponent'
+      name: 'articleDetails',
+      url: '/article/:articleId',
+      component: 'articleDetailsComponent',
+      resolve: {
+        article: function ($Article, $transition$) {
+          return $Article.get({
+            articleId: $transition$.params().articleId
+          }).$promise;
+        }
       }
-
-    ];
-
-    for (let state of STATES) {
-        $stateProvider.state(state);
+    },{
+      name: 'orderCart',
+      url: '/order',
+      component: 'orderCartComponent',
+      data: {
+          authRequired: true
+      }
+    }, {
+      name: 'contact',
+      url: '/contactUs',
+      component: 'contactComponent'
     }
+
+  ];
+
+  for (let state of STATES) {
+    $stateProvider.state(state);
+  }
 });
