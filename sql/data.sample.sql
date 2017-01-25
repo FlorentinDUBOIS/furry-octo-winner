@@ -1,13 +1,6 @@
 INSERT INTO client (nom, prenom, email, salt, hash, clientvalide, clientbloque)
   VALUES
-<<<<<<< HEAD
-      ('collignon', 'rémi', 'contact@rcdinfo.fr', '', '', TRUE, FALSE),
-      ('dubois',    'vincent', 'contact@vincentriouallon.fr', '', '', TRUE, FALSE),
-      ('riouallon', 'florentin', 'contact@dubois.fr', '', '', TRUE , FALSE),
-      ('morvan',    'guy-yann', 'contact@morvan.fr', '', '', TRUE , FALSE);
-=======
-    ('8f1a7d0f-63ae-416f-98ee-474eb86cdd3f', 'Doe', 'John', 'Londres', 'SW1A', '1AA', 'yolo@swag.penis', '$2a$10$AFM5LgZuHr7UE.EVL2DMlu', '$2a$10$AFM5LgZuHr7UE.EVL2DMluNu4Qc7xAN.jjS6I43a8mECVXjfroCVq', TRUE, FALSE);
->>>>>>> 46f28c2a819e3216ab08bb37b2e248ed7e8114e6
+    ('Doe', 'John', 'yolo@swag.penis', '$2a$10$AFM5LgZuHr7UE.EVL2DMlu', '$2a$10$AFM5LgZuHr7UE.EVL2DMluNu4Qc7xAN.jjS6I43a8mECVXjfroCVq', TRUE, FALSE);
 
 INSERT INTO article (nom, reference, prixunitaireht, description)
   VALUES
@@ -18,7 +11,7 @@ INSERT INTO article (nom, reference, prixunitaireht, description)
 
 INSERT INTO commande (clientid, datecommande, tauxtva, moyenpaiement, etapecommande, commandepayee, commandeannulee)
   VALUES
-    ( (SELECT id FROM client WHERE nom='dubois'), now(), 20.00, 'CB', 1, FALSE, FALSE);
+    ( (SELECT id FROM client WHERE nom='Doe'), now(), 20.00, 'CB', 1, FALSE, FALSE);
 
 
 INSERT INTO detailcommande (articleid, commandeid, prixunitaireht, quantite)
@@ -29,9 +22,9 @@ INSERT INTO detailcommande (articleid, commandeid, prixunitaireht, quantite)
 
 INSERT INTO adresse (ville,cp,adresse,alias,clientid)
   VALUES
-    ('Brest','29200','5 rue cuirassé bretagne','Brest', (SELECT id FROM client WHERE nom='collignon')),
-    ('Brest','29200','42 rue du yoloswag','Brest', (SELECT id FROM client WHERE nom='morvan')),
-    ('Guilers','29820','44 rue degas grall','Guilers', (SELECT id FROM client WHERE nom='riouallon')),
-    ('Saint-Grégoire','35666','rue du X','Xswag', (SELECT id FROM client WHERE nom='morvan')),
-    ('Brest','29200','2 rue maurice le flem','Brest', (SELECT id FROM client WHERE nom='dubois'));
+    ('Brest','29200','5 rue cuirassé bretagne','Brest', (SELECT id FROM client WHERE nom='Doe')),
+    ('Brest','29200','42 rue du yoloswag','Brest', (SELECT id FROM client WHERE nom='Doe')),
+    ('Guilers','29820','44 rue degas grall','Guilers', (SELECT id FROM client WHERE nom='Doe')),
+    ('Saint-Grégoire','35666','rue du X','Xswag', (SELECT id FROM client WHERE nom='Doe')),
+    ('Brest','29200','2 rue maurice le flem','Brest', (SELECT id FROM client WHERE nom='Doe'));
     
