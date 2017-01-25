@@ -1,7 +1,7 @@
-DROP TABLE `detailcommande`;
-DROP TABLE `commande`;
-DROP TABLE `client`;
-DROP TABLE `article`;
+DROP TABLE IF EXISTS `detailcommande`;
+DROP TABLE IF EXISTS `commande`;
+DROP TABLE IF EXISTS `client`;
+DROP TABLE IF EXISTS `article`;
 
 CREATE TABLE `article` (
   `id` varchar(64) NOT NULL,
