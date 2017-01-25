@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+
 @Service
 public class ClientService implements IService<Client, String> {
 
@@ -40,11 +44,6 @@ public class ClientService implements IService<Client, String> {
     @Transactional
     public void delete(String Id) {
         clientRepository.delete(Id);
-    }
-
-    @Transactional
-    public Boolean exists(String Id) {
-        return clientRepository.exists(Id);
     }
 
     @Transactional

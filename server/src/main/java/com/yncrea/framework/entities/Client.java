@@ -3,10 +3,7 @@ package com.yncrea.framework.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -15,25 +12,25 @@ public class Client {
 
     @Id
     @Column(name = "id")
-    private String Id;
+    private String id;
 
     @Column(name = "nom")
-    private String Nom;
+    private String nom;
 
     @Column(name = "prenom")
-    private String Prenom;
+    private String prenom;
 
     @Column(name = "ville")
-    private String Ville;
+    private String ville;
 
     @Column(name = "cp")
-    private String CP;
+    private String cp;
 
     @Column(name = "adresse")
-    private String Adresse;
+    private String adresse;
 
     @Column(name = "email")
-    private String Email;
+    private String email;
 
     @JsonIgnore
     @Column(name = "salt")
@@ -44,85 +41,69 @@ public class Client {
     private String hash;
 
     @Column(name = "clientvalide")
-    private Boolean ClientValide;
+    private Boolean clientvalide;
 
     @Column(name = "clientbloque")
-    private Boolean ClientBloque;
+    private Boolean clientbloque;
 
     public Client() {
-        Id = UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString();
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getNom() {
-        return Nom;
+        return nom;
     }
 
     public void setNom(String nom) {
-        Nom = nom;
+        this.nom = nom;
     }
 
     public String getPrenom() {
-        return Prenom;
+        return prenom;
     }
 
     public void setPrenom(String prenom) {
-        Prenom = prenom;
+        this.prenom = prenom;
     }
 
     public String getVille() {
-        return Ville;
+        return ville;
     }
 
     public void setVille(String ville) {
-        Ville = ville;
+        this.ville = ville;
     }
 
-    public String getCP() {
-        return CP;
+    public String getCp() {
+        return cp;
     }
 
-    public void setCP(String CP) {
-        this.CP = CP;
+    public void setCp(String cp) {
+        this.cp = cp;
     }
 
     public String getAdresse() {
-        return Adresse;
+        return adresse;
     }
 
     public void setAdresse(String adresse) {
-        Adresse = adresse;
+        this.adresse = adresse;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
-    }
-
-    public Boolean getClientValide() {
-        return ClientValide;
-    }
-
-    public void setClientValide(Boolean clientValide) {
-        ClientValide = clientValide;
-    }
-
-    public Boolean getClientBloque() {
-        return ClientBloque;
-    }
-
-    public void setClientBloque(Boolean clientBloque) {
-        ClientBloque = clientBloque;
+        this.email = email;
     }
 
     public String getSalt() {
@@ -139,6 +120,22 @@ public class Client {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public Boolean getClientvalide() {
+        return clientvalide;
+    }
+
+    public void setClientvalide(Boolean clientvalide) {
+        this.clientvalide = clientvalide;
+    }
+
+    public Boolean getClientbloque() {
+        return clientbloque;
+    }
+
+    public void setClientbloque(Boolean clientbloque) {
+        this.clientbloque = clientbloque;
     }
 
     public void setPassword(String password) {

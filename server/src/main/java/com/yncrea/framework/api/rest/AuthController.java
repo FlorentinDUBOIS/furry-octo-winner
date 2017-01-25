@@ -8,7 +8,6 @@ import com.yncrea.framework.security.jwt.services.AuthenticationService;
 import com.yncrea.framework.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,13 +27,13 @@ public class AuthController {
     public HashMap<String, String> create(@RequestBody ClientCredentials clientCredentials) throws ClientNotFoundException, AuthenticationException {
         Client client = clientService.findByEmail(clientCredentials.getEmail());
 
-        if (client != null) {
+        if (client == null) {
             throw new ClientNotFoundException("Unknown client");
         }
 
         HashMap<String, String> object = new HashMap<String, String>();
         if (!BCrypt.checkpw(clientCredentials.getMotdepasse(), client.getHash())) {
-            throw new AuthenticationException("Password is invalid.");
+            throw new AuthenticationException("Invalid password");
         }
 
         object.put("token", authenticationService.genToken(client));
