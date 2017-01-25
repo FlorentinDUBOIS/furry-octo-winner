@@ -1,7 +1,7 @@
 -- password bob
 INSERT INTO client (id, nom, prenom, ville, cp, adresse, email, salt, hash, clientvalide, clientbloque)
   VALUES
-    ('8f1a7d0f-63ae-416f-98ee-474eb86cdd3f', 'Doe', 'John', 'Londres', 'SW1A', '1AA', 'yolo@swag.penis', '$2a$10$AFM5LgZuHr7UE.EVL2DMlu', '$2a$10$AFM5LgZuHr7UE.EVL2DMluNu4Qc7xAN.jjS6I43a8mECVXjfroCVq', 1, 0);
+    ('8f1a7d0f-63ae-416f-98ee-474eb86cdd3f', 'Doe', 'John', 'Londres', 'SW1A', '1AA', 'yolo@swag.penis', '$2a$10$AFM5LgZuHr7UE.EVL2DMlu', '$2a$10$AFM5LgZuHr7UE.EVL2DMluNu4Qc7xAN.jjS6I43a8mECVXjfroCVq', TRUE, FALSE);
 
 INSERT INTO article (nom, reference, prixunitaireht, description)
   VALUES
