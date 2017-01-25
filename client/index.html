@@ -9,7 +9,13 @@
     </head>
     <body data-ng-app="furryApp">
 
-        <a ui-sref="hello({ userId: 'test' })">TEST</a>
+        <nav ng-controller="navbarCtrl">
+            <a ui-sref="articleList()">Home Page</a>
+            <a ui-sref="articleList()">New Product</a>
+            <a href="#">Specials</a>
+            <a href="#" ng-click="accountLink()">{{account}}</a>
+            <a ui-sref="">Contact us</a>
+        </nav>
 
         <ui-view></ui-view>      
         
@@ -44,5 +50,9 @@
         <script src="furry-app/components/article-details.component.js"></script>
         <script src="furry-app/components/form-login.component.js"></script>
 
+        <!-- Imports Controller -->
+        <script src="furry-app/components/navbar-ctrl.js"></script>
+
     </body>
+
 </html>
