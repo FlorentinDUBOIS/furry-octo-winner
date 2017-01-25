@@ -8,15 +8,15 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 
 @Configuration
 public class ResourcesConfiguration extends WebMvcConfigurerAdapter {
-/*
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
             .addResourceHandler("/**")
-            .addResourceLocations("classpath:/src/main/webapp")
+            .addResourceLocations("file:/home/florentin/Git/FlorentinDUBOIS/furry-octo-winner/client")
             .setCachePeriod(3600)
             .resourceChain(true)
             .addResolver(new PathResourceResolver())
             .addResolver(new GzipResourceResolver());
-    }*/
+    }
 }
