@@ -1,71 +1,71 @@
 package com.yncrea.framework.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
-@Entity
-@Table(name = "adresse")
-public class Article {
+public class Adresse {
 
-    @Id
-    @Column(name = "id")
-    private String Id;
+        @javax.persistence.Id
+        @Column(name = "id")
+        private String Id;
 
-    @Column(name = "ville")
-    private String Ville;
+        @Column(name = "ville")
+        private String Ville;
 
-    @Column(name = "cp")
-    private String CP ;
+        @Column(name = "cp")
+        private String CP ;
 
-    @Column(name = "adresse")
-    private String Adresse ;
+        @Column(name = "adresse")
+        private String Adresse ;
 
-    @Column(name = "alias")
-    private String Alias ;
+        @Column(name = "alias")
+        private String Alias ;
 
-    public Article() {
-        Id = UUID.randomUUID().toString();
-    }
+        public Article() {
+            Id = UUID.randomUUID().toString();
+        }
 
-    public String getId() {
-        return Id;
-    }
+        public String getId() {
+            return Id;
+        }
 
-    public void setId(String id) {
-        Id = id;
-    }
+        public void setId(String id) {
+            Id = id;
+        }
 
-    public String getVille() {
-        return Ville;
-    }
+        public String getVille() {
+            return Ville;
+        }
 
-    public void setVille(String ville) {
-        Ville = ville;
-    }
+        public void setVille(String ville) {
+            Ville = ville;
+        }
 
-    public String getCP() {
-        return CP;
-    }
+        public String getCP() {
+            return CP;
+        }
 
-    public void setCP(String CP) {
-        this.CP = CP;
-    }
+        public void setCP(String CP) {
+            this.CP = CP;
+        }
 
-    public String getAdresse() {
-        return Adresse;
-    }
+        public String getAdresse() {
+            return Adresse;
+        }
 
-    public void setAdresse(String adresse) {
-        Adresse = adresse;
-    }
+        public void setAdresse(String adresse) {
+            Adresse = adresse;
+        }
 
-    public String getAlias() {
-        return Alias;
-    }
+        public String getAlias() {
+            return Alias;
+        }
 
-    public void setAlias(String alias) {
-        Alias = alias;
-    }
-
+        public void setAlias(String alias) {
+            Alias = alias;
+        }
 
 }
