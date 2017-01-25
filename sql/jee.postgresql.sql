@@ -2,7 +2,7 @@
 --
 -- CREATE TABLE
 --
-DROP TABLE IF EXISTS detailcommande, commande, article, client ;
+DROP TABLE IF EXISTS detailcommande, commande, article, client;
 
 CREATE TABLE client (
   id            varchar(64) PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
