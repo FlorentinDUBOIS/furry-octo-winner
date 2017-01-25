@@ -46,4 +46,9 @@ public class ClientService implements IService<Client, String> {
     public Boolean exists(String Id) {
         return clientRepository.exists(Id);
     }
+
+    @Transactional
+    public Client findByEmail(String email) {
+        return clientRepository.findByEmail(email);
+    }
 }

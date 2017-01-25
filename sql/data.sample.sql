@@ -1,9 +1,13 @@
 INSERT INTO client (nom, prenom, email, salt, hash, clientvalide, clientbloque)
   VALUES
+<<<<<<< HEAD
       ('collignon', 'rémi', 'contact@rcdinfo.fr', '', '', TRUE, FALSE),
       ('dubois',    'vincent', 'contact@vincentriouallon.fr', '', '', TRUE, FALSE),
       ('riouallon', 'florentin', 'contact@dubois.fr', '', '', TRUE , FALSE),
       ('morvan',    'guy-yann', 'contact@morvan.fr', '', '', TRUE , FALSE);
+=======
+    ('8f1a7d0f-63ae-416f-98ee-474eb86cdd3f', 'Doe', 'John', 'Londres', 'SW1A', '1AA', 'yolo@swag.penis', '$2a$10$AFM5LgZuHr7UE.EVL2DMlu', '$2a$10$AFM5LgZuHr7UE.EVL2DMluNu4Qc7xAN.jjS6I43a8mECVXjfroCVq', TRUE, FALSE);
+>>>>>>> 46f28c2a819e3216ab08bb37b2e248ed7e8114e6
 
 INSERT INTO article (nom, reference, prixunitaireht, description)
   VALUES

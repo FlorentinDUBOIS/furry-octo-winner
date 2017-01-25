@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Language" content="en">
         <meta name="viewport" content="width=device-width">
-        <link href="./style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="./furry-app/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <title>Furry-octo-winner</title>
     </head>
     <body data-ng-app="furryApp" ng-cloak="">
@@ -24,9 +24,9 @@
 
 
 <nav ng-controller="navbarCtrl">
-    <a ui-sref="articleList()">{{'navbarHome' | translate}}</a>
+    <a ui-sref="homePage()">{{'navbarHome' | translate}}</a>
     <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
-    <a href="#">{{'navbarSpecialOffer' | translate}}</a>
+    <a ui-sref="specialOffer()">{{'navbarSpecialOffer' | translate}}</a>
     <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
     <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
 </nav>
@@ -74,6 +74,8 @@
 <script src="furry-app/components/form-register.component.js"></script>
 <script src="furry-app/components/contact.component.js"></script>
 <script src="furry-app/components/order-cart.component.js"></script>
+<script src="furry-app/components/home-page.component.js"></script>
+<script src="furry-app/components/special-offer.component.js"></script>
 
 <!-- Imports Controller -->
 <script src="furry-app/components/navbar.controller.js"></script>

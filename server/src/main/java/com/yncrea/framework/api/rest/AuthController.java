@@ -24,16 +24,16 @@ public class AuthController {
     @Autowired
     private ClientService clientService;
 
-    @PostMapping("/api/auth/{Id}")
-    public HashMap<String, String> create(@PathVariable(name = "Id") String Id, @RequestBody ClientCredentials clientCredentials) throws ClientNotFoundException, AuthenticationException {
-        if (!clientService.exists(Id)) {
+    @PostMapping("/api/auth")
+    public HashMap<String, String> create(@RequestBody ClientCredentials clientCredentials) throws ClientNotFoundException, AuthenticationException {
+        Client client = clientService.findByEmail(clientCredentials.getEmail());
+
+        if (client != null) {
             throw new ClientNotFoundException("Unknown client");
         }
 
         HashMap<String, String> object = new HashMap<String, String>();
-        Client client = clientService.findOne(Id);
-
-        if (!BCrypt.checkpw(clientCredentials.getPassword(), client.getHash())) {
+        if (!BCrypt.checkpw(clientCredentials.getMotdepasse(), client.getHash())) {
             throw new AuthenticationException("Password is invalid.");
         }
 
