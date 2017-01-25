@@ -1,33 +1,56 @@
-furryApp.config(function($stateProvider, $resourceProvider) {
+furryApp.config(
+  ($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider) => {
 
+  // I18n
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'furry-app/langs/locale-',
+    suffix: '.json'
+  });
+  $translateProvider.determinePreferredLanguage();
+
+  // Auth
+  $httpProvider.interceptors.push('authHttpInterceptor');
+
+  // Router
   $resourceProvider.defaults.stripTrailingSlashes = false;
-
   const STATES = [
     {
+      name: 'registerForm',  
+      url: '/register',
+      component: 'registerFormComponent'
+    }, {
+      name: 'loginForm',  
+      url: '/login',
+      component: 'loginFormComponent'
+    }, {
       name: 'articleList',  
       url: '/article',
       component: 'articlesComponent',
       resolve: {
-        articles: function($Article) {
-          return $Article.query().$promise;
-        }
+          articles: function ($Article) {
+              return $Article.query().$promise;
+          }
       }
-    },{
-      name: 'articleDetails',  
+    }, {
+      name: 'articleDetails',
       url: '/article/:articleId',
       component: 'articleDetailsComponent',
       resolve: {
-        Article: function($Article, $transition$) {
-          console.log($transition$.params().articleId);
+        article: function ($Article, $transition$) {
           return $Article.get({
             articleId: $transition$.params().articleId
           }).$promise;
         }
       }
+    }, {
+      name: 'contact',
+      url: '/contactUs',
+      component: 'contactComponent'
     }
+
   ];
 
-  for(let state of STATES) {
-      $stateProvider.state(state);
+  for (let state of STATES) {
+    $stateProvider.state(state);
   }
 });

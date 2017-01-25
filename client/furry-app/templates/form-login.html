@@ -1,0 +1,10 @@
+<form name="loginForm">
+    <label for="username">E-Mail: </label>
+    <input type="text" name="username" ng-model="user.email" required>
+
+    <label for="password">Phrase de passe:</label>
+    <input type="password" name="password" ng-model="user.motdepasse" required>
+
+    <input type="submit" ng-click="logIn()" value="Connexion" ng-disabled="!loginForm.$valid">
+</form>
+<a ui-sref="registerForm()">S'enregistrer</a>

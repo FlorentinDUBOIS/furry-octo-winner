@@ -5,7 +5,7 @@ furryApp.factory('$Cart', function() {
    * @return {Map} a new or a filled map of articles
    */
   loadExistingCart = () => {
-    let cart = localStorage.getItem('client_cart');
+    let cart = localStorage.clientCart;
     if (cart != null)
         return new Map(JSON.parse(cart));
     else
@@ -17,24 +17,30 @@ furryApp.factory('$Cart', function() {
    * @param {Map} map Map 
    */
   saveCart = (map) => {
-    localStorage.setItem('client_cart', JSON.stringify(Array.from(map.entries())));
+    return localStorage.clientCart = JSON.stringify(Array.from(map.entries()));
   };
 
   return {
 
+    /**
+     * Increment count of article in client cart
+     * @param {string} articleId Article UUID
+     */
     addArticle: (articleId) => {
         console.log(`Add to cart: ${articleId}`);
 
         let cart = loadExistingCart();
         if (cart.has(articleId)) {
-          console.log('existing', cart.get(articleId));
           cart.set(articleId, cart.get(articleId) + 1);
         } else {
-          console.log('Not existing', cart.get(articleId));
           cart.set(articleId, 1);
         }
-        return saveCart(cart);
+        saveCart(cart);
     },
+    /**
+     * Decrement count of article in client cart
+     * @param {string} articleId Article UUID
+     */
     removeArticle: (articleId) => {
       console.log(`Remove from cart: ${articleId}`);
 
@@ -49,6 +55,10 @@ furryApp.factory('$Cart', function() {
         return saveCart(cart);
       }
     },
+    /**
+     * Get all items in cart with count for each
+     * @return {Map} Map of articleId => count
+     */
     resumeCart: () => {
         return loadExistingCart()
     },
@@ -56,5 +66,4 @@ furryApp.factory('$Cart', function() {
         localStorageService.clearAll();
     }
   }
-
 });

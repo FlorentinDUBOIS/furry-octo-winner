@@ -1,0 +1,24 @@
+<form name="registerForm">
+    <label for="nom">Nom: </label>
+    <input type="text" name="nom" ng-model="user.nom" required>
+    
+    <label for="prenom">Prénom: </label>
+    <input type="text" name="prenom" ng-model="user.prenom" required>
+
+    <label for="adresse">Adresse: </label>
+    <input type="text" name="adresse" ng-model="user.adresse" required>
+
+    <label for="codepostal">Code Postal: </label>
+    <input type="text" name="codepostal" ng-model="user.cp" required>
+
+    <label for="ville">Ville: </label>
+    <input type="text" name="ville" ng-model="user.ville" required>
+
+    <label for="email">mél: </label>
+    <input type="email" name="email" ng-model="user.email" required>
+
+    <label for="password">Phrase de passe:</label>
+    <input type="password" name="password" ng-model="user.motdepasse" required pattern=".{10,}">
+
+    <input type="submit"  ng-click="register()" value="Enregistrement" ng-disabled="!registerForm.$valid">
+</form>
