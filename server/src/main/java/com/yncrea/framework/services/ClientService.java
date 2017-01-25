@@ -41,4 +41,9 @@ public class ClientService implements IService<Client, String> {
     public void delete(String Id) {
         clientRepository.delete(Id);
     }
+
+    @Transactional
+    public Boolean exists(String Id) {
+        return clientRepository.exists(Id);
+    }
 }
