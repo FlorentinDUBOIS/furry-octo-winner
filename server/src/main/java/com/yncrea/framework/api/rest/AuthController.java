@@ -26,16 +26,16 @@ public class AuthController {
     private ClientService clientService;
 
     @PostMapping("/api/auth")
-    public HashMap<String, String> create(@RequestBody ClientCredentials clientCredentials) throws ClientNotFoundException, AuthenticationException {
+    public HashMap<String, String> create(@RequestBody ClientCredentials clientCredentials) {
         Client client = clientService.findByEmail(clientCredentials.getEmail());
 
         if (client == null) {
-            throw new ClientNotFoundException("Unknown client");
+            throw new ClientNotFoundException();
         }
 
         HashMap<String, String> object = new HashMap<String, String>();
         if (!BCrypt.checkpw(clientCredentials.getMotdepasse(), client.getHash())) {
-            throw new AuthenticationException("Invalid password");
+            throw new AuthenticationException();
         }
 
         object.put("token", authenticationService.genToken(client));
