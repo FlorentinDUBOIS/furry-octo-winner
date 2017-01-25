@@ -45,7 +45,7 @@ furryApp.config(
       }
     },{
       name: 'orderCart',
-      url: '/order',
+      url: '/order/cart',
       component: 'orderCartComponent',
       data: {
           authRequired: true
@@ -54,7 +54,15 @@ furryApp.config(
       name: 'contact',
       url: '/contactUs',
       component: 'contactComponent'
-    }
+    }, {
+      name: 'homePage',
+          url: '/',
+          component: 'homePageComponent'
+      }, {
+          name: 'specialOffer',
+          url: '/specialOffer',
+          component: 'specialOfferComponent'
+      }
 
   ];
 

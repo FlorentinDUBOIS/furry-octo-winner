@@ -13,7 +13,8 @@ furryApp
       .then(() => {
         $User.getInformations()
         .then((user) => {
-
+          console.log(user);
+          $state.go('articleList');
         })
         .catch((err) => {
           console.log(err);
