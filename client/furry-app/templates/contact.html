@@ -3,19 +3,19 @@
 <form method="post" action="">
     <table>
         <tr>
-            <td>Email :</td>
+            <td>{{'contactMail' | translate}} :</td>
             <td><input type="text" name="mail"></td>
         </tr>
         <tr>
-            <td>Sujet :</td>
+            <td>{{'contactSubject' | translate}} :</td>
             <td><input type="text" name="subject"></td>
         </tr>
         <tr>
-            <td>Votre message :</td>
+            <td>{{'contactMessage' | translate}} :</td>
             <td><textarea name="message"></textarea></td>
         </tr>
         <tr>
-            <td><input type="submit" value="Envoyer"></td>
+            <td><input type="submit" value="{{'contactSendButton' | translate}}"></td>
         </tr>
     </table>
 </form>

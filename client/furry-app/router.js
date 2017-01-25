@@ -7,6 +7,7 @@ furryApp.config(
     suffix: '.json'
   });
   $translateProvider.determinePreferredLanguage();
+  $translateProvider.fallbackLanguage('fr_FR');
 
   // Auth
   $httpProvider.interceptors.push('authHttpInterceptor');

@@ -1,73 +1,78 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta http-equiv="Content-Language" content="en">
-        <meta name="viewport" content="width=device-width">
-        <link href="./style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <title>Furry-octo-winner</title>
-    </head>
-    <body data-ng-app="furryApp">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+    <link href="./furry-app/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <title>Furry-octo-winner</title>
+</head>
+<body data-ng-app="furryApp">
 
+<div id="lang" ng-controller="langCtrl">
+    <ul>
+        <li><a href="#" ng-click="changeLanguage('fr_FR')">Français</a></li>
+        <li><a href="#" ng-click="changeLanguage('en_EN')">English</a></li>
+    </ul>
+</div>
 
-    <section layout="row" layout-align="center center">
-        <md-button class="groupX left">Apple</md-button>
-        <md-button class="groupX middle">Samsung</md-button>
-        <md-button class="groupX middle">Sony</md-button>
-        <md-button class="groupX right">B&amp;O</md-button>
-    </section>
+<br/>
+<br/>
 
-        <nav ng-controller="navbarCtrl">
-            <a ui-sref="articleList()">Accueil</a>
-            <a ui-sref="articleList()">Nouveaux Produits</a>
-            <a href="#">Offres Specialles</a>
-            <a href="javascript:void(0)" ng-click="accountLink()">{{account}}</a>
-            <a ui-sref="contact()">Contact</a>
-        </nav>
+<h1>{{'test' | translate}}</h1>
 
-        <ui-view></ui-view>      
-        
-        <!-- Imports Libraries -->
-        <script src="libs/angular.js"></script>
-        <script src="libs/angular-animate.js"></script>
-        <script src="libs/angular-aria.js"></script>
-        <script src="libs/angular-cookies.js"></script>
-        <script src="libs/angular-loader.js"></script>
-        <script src="libs/angular-messages.js"></script>
-        <script src="libs/angular-message-format.js"></script>
-        <script src="libs/angular-mocks.js"></script>
-        <script src="libs/angular-parse-ext.js"></script>
-        <script src="libs/angular-resource.js"></script>
-        <script src="libs/angular-route.js"></script>
-        <script src="libs/angular-sanitize.js"></script>
-        <script src="libs/angular-touch.js"></script>
-        <script src="libs/angular-ui-router.js"></script>
-        <script src="libs/angular-translate.js"></script>
-        <script src="libs/angular-translate-loader-url.js"></script>
-        <script src="libs/angular-translate-loader-static-files.js"></script>
+<nav ng-controller="navbarCtrl">
+    <a ui-sref="articleList()">{{'navbarHome' | translate}}</a>
+    <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
+    <a href="#">{{'navbarSpecialOffer' | translate}}</a>
+    <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
+    <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
+</nav>
 
-        <script src="furry-app/main.js"></script>
+<ui-view></ui-view>
 
-        <!-- Imports Services -->
-        <script src="furry-app/services/article.js"></script>
-        <script src="furry-app/services/cart.js"></script>
-        <script src="furry-app/services/user.js"></script>
-        <script src="furry-app/services/auth.js"></script>
+<!-- Imports Libraries -->
+<script src="libs/angular.js"></script>
+<script src="libs/angular-animate.js"></script>
+<script src="libs/angular-aria.js"></script>
+<script src="libs/angular-cookies.js"></script>
+<script src="libs/angular-loader.js"></script>
+<script src="libs/angular-messages.js"></script>
+<script src="libs/angular-message-format.js"></script>
+<script src="libs/angular-mocks.js"></script>
+<script src="libs/angular-parse-ext.js"></script>
+<script src="libs/angular-resource.js"></script>
+<script src="libs/angular-route.js"></script>
+<script src="libs/angular-sanitize.js"></script>
+<script src="libs/angular-touch.js"></script>
+<script src="libs/angular-ui-router.js"></script>
+<script src="libs/angular-translate.js"></script>
+<script src="libs/angular-translate-loader-url.js"></script>
+<script src="libs/angular-translate-loader-static-files.js"></script>
 
-        <!-- Imports Router -->
-        <script src="furry-app/router.js"></script>
+<script src="furry-app/main.js"></script>
 
-        <!-- Imports Components -->
-        <script src="furry-app/components/articles.component.js"></script>
-        <script src="furry-app/components/article-details.component.js"></script>
-        <script src="furry-app/components/form-login.component.js"></script>
-        <script src="furry-app/components/form-register.component.js"></script>
-        <script src="furry-app/components/contact.component.js"></script>
+<!-- Imports Services -->
+<script src="furry-app/services/article.js"></script>
+<script src="furry-app/services/cart.js"></script>
+<script src="furry-app/services/user.js"></script>
+<script src="furry-app/services/auth.js"></script>
 
-        <!-- Imports Controller -->
-        <script src="furry-app/components/navbar-ctrl.js"></script>
+<!-- Imports Router -->
+<script src="furry-app/router.js"></script>
 
-    </body>
+<!-- Imports Components -->
+<script src="furry-app/components/articles.component.js"></script>
+<script src="furry-app/components/article-details.component.js"></script>
+<script src="furry-app/components/form-login.component.js"></script>
+<script src="furry-app/components/form-register.component.js"></script>
+<script src="furry-app/components/contact.component.js"></script>
+
+<!-- Imports Controller -->
+<script src="furry-app/components/navbar.controller.js"></script>
+<script src="furry-app/components/lang.controller.js"></script>
+
+</body>
 
 </html>
