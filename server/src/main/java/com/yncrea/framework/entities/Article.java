@@ -9,61 +9,61 @@ public class Article {
 
     @Id
     @Column(name = "id")
-    private String Id;
+    private String id;
 
     @Column(name = "nom")
-    private String Nom;
+    private String nom;
 
     @Column(name = "reference")
-    private String Reference ;
+    private String reference ;
 
     @Column(name = "prixunitaireht")
-    private float PrixUnitaireHT ;
+    private float prixunitaireht ;
 
     @Column(name = "description")
-    private String Description ;
+    private String description ;
 
     public Article() {
-        Id = UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString();
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getNom() {
-        return Nom;
+        return nom;
     }
 
     public void setNom(String nom) {
-        Nom = nom;
+        this.nom = nom;
     }
 
     public String getReference() {
-        return Reference;
+        return reference;
     }
 
     public void setReference(String reference) {
-        Reference = reference;
+        this.reference = reference;
     }
 
-    public float getPrixUnitaireHT() {
-        return PrixUnitaireHT;
+    public float getPrixunitaireht() {
+        return prixunitaireht;
     }
 
-    public void setPrixUnitaireHT(float prixUnitaireHT) {
-        PrixUnitaireHT = prixUnitaireHT;
+    public void setPrixunitaireht(float prixunitaireht) {
+        this.prixunitaireht = prixunitaireht;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 }

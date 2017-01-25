@@ -9,11 +9,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JWTConfiguration {
 
-    @Autowired
-    private JWTFilter jwtFilter;
 
     @Bean
-    public FilterRegistrationBean jwtFilter() {
+    public FilterRegistrationBean JWTInterceptor() {
         final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         final String[] paths = new String[] {
             "/api/article",
@@ -33,7 +31,7 @@ public class JWTConfiguration {
             "/beans*"
         };
 
-        registrationBean.setFilter(jwtFilter);
+        registrationBean.setFilter(new JWTFilter());
         registrationBean.addUrlPatterns(paths);
 
         return registrationBean;
