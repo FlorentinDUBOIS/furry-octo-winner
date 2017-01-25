@@ -62,6 +62,10 @@ furryApp.config(
           name: 'specialOffer',
           url: '/specialOffer',
           component: 'specialOfferComponent'
+      }, {
+          name: 'myAccount',
+          url: '/myAccount',
+          component: 'myAccountComponent'
       }
 
   ];
