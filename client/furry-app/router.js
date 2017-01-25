@@ -54,7 +54,15 @@ furryApp.config(
       name: 'contact',
       url: '/contactUs',
       component: 'contactComponent'
-    }
+    }, {
+      name: 'homePage',
+          url: '/',
+          component: 'homePageComponent'
+      }, {
+          name: 'specialOffer',
+          url: '/specialOffer',
+          component: 'specialOfferComponent'
+      }
 
   ];
 
