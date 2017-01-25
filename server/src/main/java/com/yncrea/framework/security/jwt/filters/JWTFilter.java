@@ -16,19 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component
 public class JWTFilter extends GenericFilterBean {
-
-    @Autowired
-    private AuthenticationService authenticationService;
-
-    @Autowired
-    private ClientService clientService;
 
     @Override
     public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {
         final HttpServletRequest req = (HttpServletRequest) servletRequest;
         final HttpServletResponse res = (HttpServletResponse) servletResponse;
+        final AuthenticationService authenticationService = new AuthenticationService();
 
         String authorization = req.getHeader("Authorization");
         if (authorization == null || !authorization.startsWith("JWT ")) {
@@ -39,17 +33,6 @@ public class JWTFilter extends GenericFilterBean {
 
         String token = authorization.substring(4); // remove "JWT "
         if (!authenticationService.isValid(token)) {
-            res.sendError(403);
-
-            return;
-        }
-
-        Claims claims = Jwts
-            .parser()
-            .parseClaimsJws(token)
-            .getBody();
-
-        if (!clientService.exists(claims.getSubject())) {
             res.sendError(403);
 
             return;
