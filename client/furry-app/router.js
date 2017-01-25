@@ -4,6 +4,10 @@ furryApp.config(function($stateProvider, $resourceProvider) {
 
   const STATES = [
     {
+      name: 'loginForm',  
+      url: '/login',
+      component: 'loginFormComponent'
+    }, {
       name: 'articleList',  
       url: '/article',
       component: 'articlesComponent',
@@ -12,13 +16,12 @@ furryApp.config(function($stateProvider, $resourceProvider) {
           return $Article.query().$promise;
         }
       }
-    },{
+    }, {
       name: 'articleDetails',  
       url: '/article/:articleId',
       component: 'articleDetailsComponent',
       resolve: {
         Article: function($Article, $transition$) {
-          console.log($transition$.params().articleId);
           return $Article.get({
             articleId: $transition$.params().articleId
           }).$promise;
