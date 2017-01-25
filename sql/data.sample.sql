@@ -1,9 +1,6 @@
-INSERT INTO client (nom, prenom, cp, adresse, ville, email, salt, hash, clientvalide, clientbloque)
+INSERT INTO client (id, nom, prenom, ville, cp, adresse, email, salt, hash, clientvalide, clientbloque)
   VALUES
-      ('collignon', 'rémi',       '29200', '2 rue maurice le flem', 'brest', 'contact@rcdinfo.fr', '', '', TRUE, FALSE),
-      ('dubois',    'vincent',    '29200', '2 rue maurice le flem', 'brest', 'contact@vincentriouallon.fr', '', '', TRUE, FALSE),
-      ('riouallon', 'florentin',  '29200', '2 rue maurice le flem', 'brest', 'contact@dubois.fr', '', '', TRUE , FALSE),
-      ('morvan',    'guy-yann',   '29200', '2 rue maurice le flem', 'brest', 'contact@morvan.fr', '', '', TRUE , FALSE);
+    ('b40a4154-5224-4e00-9ada-9cf6b9f2fa2e', 'DUBOIS', 'Florentin', 'Brest', '29200', '3 rue bosquet', 'duboiflorentin@live.fr', '$2a$10$EoGEOGkbBrjRVpvbuU7Tqu', '$2a$10$EoGEOGkbBrjRVpvbuU7TquhVbP9o5tLRNszWLuzcnqaW3Ys8vOWH6', 1, 0);
 
 INSERT INTO article (nom, reference, prixunitaireht, description)
   VALUES

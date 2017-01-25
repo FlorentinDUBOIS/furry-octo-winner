@@ -6,7 +6,6 @@ import com.yncrea.framework.api.rest.pojos.ClientCredentials;
 import com.yncrea.framework.entities.Client;
 import com.yncrea.framework.security.jwt.services.AuthenticationService;
 import com.yncrea.framework.services.ClientService;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 public class AuthController {
