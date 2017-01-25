@@ -7,6 +7,7 @@ furryApp.config(
     suffix: '.json'
   });
   $translateProvider.determinePreferredLanguage();
+  $translateProvider.fallbackLanguage('fr_FR');
 
   // Auth
   $httpProvider.interceptors.push('authHttpInterceptor');
@@ -41,6 +42,13 @@ furryApp.config(
             articleId: $transition$.params().articleId
           }).$promise;
         }
+      }
+    },{
+      name: 'orderCart',
+      url: '/order',
+      component: 'orderCartComponent',
+      data: {
+          authRequired: true
       }
     }, {
       name: 'contact',

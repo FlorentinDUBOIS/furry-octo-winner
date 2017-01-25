@@ -8,23 +8,28 @@
         <link href="./style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <title>Furry-octo-winner</title>
     </head>
-    <body data-ng-app="furryApp">
+    <body data-ng-app="furryApp" ng-cloak="">
+
+<div id="lang" ng-controller="langCtrl">
+    <ul>
+        <li><a href="#" ng-click="changeLanguage('fr_FR')">Français</a></li>
+        <li><a href="#" ng-click="changeLanguage('en_EN')">English</a></li>
+    </ul>
+</div>
+
+<br/>
+<br/>
+
+<h1>{{'test' | translate}}</h1>
 
 
-    <section layout="row" layout-align="center center">
-        <md-button class="groupX left">Apple</md-button>
-        <md-button class="groupX middle">Samsung</md-button>
-        <md-button class="groupX middle">Sony</md-button>
-        <md-button class="groupX right">B&amp;O</md-button>
-    </section>
-
-        <nav ng-controller="navbarCtrl">
-            <a ui-sref="articleList()">Accueil</a>
-            <a ui-sref="articleList()">Nouveaux Produits</a>
-            <a href="#">Offres Specialles</a>
-            <a href="javascript:void(0)" ng-click="accountLink()">{{account}}</a>
-            <a ui-sref="contact()">Contact</a>
-        </nav>
+<nav ng-controller="navbarCtrl">
+    <a ui-sref="articleList()">{{'navbarHome' | translate}}</a>
+    <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
+    <a href="#">{{'navbarSpecialOffer' | translate}}</a>
+    <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
+    <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
+</nav>
 
         <ui-view></ui-view>      
         
@@ -48,27 +53,32 @@
         <script src="libs/angular-translate-loader-static-files.js"></script>
         <script src="libs/angular-jwt.js"></script>
 
-        <script src="furry-app/main.js"></script>
 
-        <!-- Imports Services -->
-        <script src="furry-app/services/article.js"></script>
-        <script src="furry-app/services/cart.js"></script>
-        <script src="furry-app/services/user.js"></script>
-        <script src="furry-app/services/auth.js"></script>
+<script src="furry-app/main.js"></script>
 
-        <!-- Imports Router -->
-        <script src="furry-app/router.js"></script>
 
-        <!-- Imports Components -->
-        <script src="furry-app/components/articles.component.js"></script>
-        <script src="furry-app/components/article-details.component.js"></script>
-        <script src="furry-app/components/form-login.component.js"></script>
-        <script src="furry-app/components/form-register.component.js"></script>
-        <script src="furry-app/components/contact.component.js"></script>
+<!-- Imports Services -->
+<script src="furry-app/services/article.js"></script>
+<script src="furry-app/services/cart.js"></script>
+<script src="furry-app/services/user.js"></script>
+<script src="furry-app/services/auth.js"></script>
 
-        <!-- Imports Controller -->
-        <script src="furry-app/components/navbar-ctrl.js"></script>
 
-    </body>
+<!-- Imports Router -->
+<script src="furry-app/router.js"></script>
+
+<!-- Imports Components -->
+<script src="furry-app/components/articles.component.js"></script>
+<script src="furry-app/components/article-details.component.js"></script>
+<script src="furry-app/components/form-login.component.js"></script>
+<script src="furry-app/components/form-register.component.js"></script>
+<script src="furry-app/components/contact.component.js"></script>
+<script src="furry-app/components/order-cart.component.js"></script>
+
+<!-- Imports Controller -->
+<script src="furry-app/components/navbar.controller.js"></script>
+<script src="furry-app/components/lang.controller.js"></script>
+
+</body>
 
 </html>

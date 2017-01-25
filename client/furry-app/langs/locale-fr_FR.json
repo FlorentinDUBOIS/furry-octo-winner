@@ -1,3 +1,14 @@
 {
-    
+  "test": "francais",
+  "navbarHome": "Accueil",
+  "navbarNewProduct": "Nouveaux produits",
+  "navbarSpecialOffer": "Offre spéciale",
+  "navbarContact": "Contact",
+  "navbarMyAccount" : "Mon compte",
+  "navbarLogin" : "Login/Register",
+
+  "contactMail" : "Mél" ,
+  "contactMessage" : "Message" ,
+  "contactSubject" : "Sujet" ,
+  "contactSendButton" : "Envoyer"
 }
