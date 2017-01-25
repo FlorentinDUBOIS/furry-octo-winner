@@ -1,15 +1,19 @@
 package com.yncrea.framework.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.UUID;
 
 @Entity
 @Table(name = "client")
 public class Client {
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     private String Id;
 
@@ -44,6 +48,10 @@ public class Client {
 
     @Column(name = "clientbloque")
     private Boolean ClientBloque;
+
+    public Client() {
+        Id = UUID.randomUUID().toString();
+    }
 
     public String getId() {
         return Id;
@@ -131,5 +139,13 @@ public class Client {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public void setPassword(String password) {
+        if (salt == null) {
+            salt = BCrypt.gensalt();
+        }
+
+        hash = BCrypt.hashpw(password, salt);
     }
 }

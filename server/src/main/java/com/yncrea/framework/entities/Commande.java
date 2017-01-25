@@ -2,13 +2,13 @@ package com.yncrea.framework.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "commande")
 public class Commande {
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     private String Id;
 
@@ -32,6 +32,10 @@ public class Commande {
 
     @Column(name = "commandeannulee")
     private Boolean commandeannulee;
+
+    public Commande() {
+        Id = UUID.randomUUID().toString();
+    }
 
     public String getId() {
         return Id;
