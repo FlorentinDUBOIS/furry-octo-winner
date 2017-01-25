@@ -10,15 +10,18 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.Properties;
 
 @Service
 public class AuthenticationService {
 
-    @Value("${application.security.jwt.expiration.time}")
-    private Long expirationTime;
-
-    @Value("${application.security.jwt.secret}")
+    private Integer expirationTime;
     private String secret;
+
+    public AuthenticationService() {
+        expirationTime = 216000000;
+        secret = "it's a secret";
+    }
 
     public String genToken(Client client) {
         return Jwts
