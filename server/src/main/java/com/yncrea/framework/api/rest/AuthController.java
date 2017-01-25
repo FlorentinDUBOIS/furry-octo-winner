@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 
-@CrossOrigin
 @RestController
 public class AuthController {
 
