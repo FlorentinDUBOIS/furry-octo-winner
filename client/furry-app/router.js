@@ -27,25 +27,30 @@ furryApp.config(
       url: '/article',
       component: 'articlesComponent',
       resolve: {
-        articles: function($Article) {
-          return $Article.query().$promise;
-        }
+          articles: function ($Article) {
+              return $Article.query().$promise;
+          }
       }
     }, {
-      name: 'articleDetails',  
-      url: '/article/:articleId',
-      component: 'articleDetailsComponent',
-      resolve: {
-        Article: function($Article, $transition$) {
-          return $Article.get({
-            articleId: $transition$.params().articleId
-          }).$promise;
-        }
+          name: 'articleDetails',
+          url: '/article/:articleId',
+          component: 'articleDetailsComponent',
+          resolve: {
+              Article: function ($Article, $transition$) {
+                  return $Article.get({
+                      articleId: $transition$.params().articleId
+                  }).$promise;
+              }
+          }
+      }, {
+      name: 'contact',
+          url: '/contactUs',
+          component: 'contactComponent'
       }
-    }
-  ];
 
-  for(let state of STATES) {
-      $stateProvider.state(state);
-  }
+    ];
+
+    for (let state of STATES) {
+        $stateProvider.state(state);
+    }
 });
