@@ -4,12 +4,24 @@ furryApp.config(function($stateProvider, $resourceProvider) {
 
   const STATES = [
     {
-      name: 'productList',  
-      url: '/product',
-      component: 'productsComponent',
+      name: 'articleList',  
+      url: '/article',
+      component: 'articlesComponent',
       resolve: {
-        products: function($Product) {
-          return $Product.query().$promise;
+        articles: function($Article) {
+          return $Article.query().$promise;
+        }
+      }
+    },{
+      name: 'articleDetails',  
+      url: '/article/:articleId',
+      component: 'articleDetailsComponent',
+      resolve: {
+        Article: function($Article, $transition$) {
+          console.log($transition$.params().articleId);
+          return $Article.get({
+            articleId: $transition$.params().articleId
+          }).$promise;
         }
       }
     }
