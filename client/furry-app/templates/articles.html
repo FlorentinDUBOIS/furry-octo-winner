@@ -1,0 +1,9 @@
+<h1>Liste des produits</h1>
+<article ng-repeat="article in $ctrl.articles">
+    <h4 ng-click="showArticle(article.id)">{{ article.nom }}</h4>
+    <small>{{ article.reference }}</small>
+    <p>{{ article.prixUnitaireHT | currency:"€":2 }}</p>
+    <p>{{ article.description }}</p>
+    <button ng-click="addToCart(article.id)">Ajouter</button>
+    <button ng-click="removeFromCart(article.id)">Ajouter</button>
+</article>
