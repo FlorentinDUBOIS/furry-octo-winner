@@ -10,25 +10,25 @@ import java.util.UUID;
 @Table(name = "adresse")
 public class Adresse {
 
-        @Id
-        @Column(name = "id")
-        private String id;
+    @Id
+    @Column(name = "id")
+    private String id;
 
-        @Column(name = "ville")
-        private String ville;
+    @Column(name = "ville")
+    private String ville;
 
-        @Column(name = "cp")
-        private String cp ;
+    @Column(name = "cp")
+    private String cp ;
 
-        @Column(name = "adresse")
-        private String adresse ;
+    @Column(name = "adresse")
+    private String adresse ;
 
-        @Column(name = "alias")
-        private String alias ;
+    @Column(name = "alias")
+    private String alias ;
 
-        public Article() {
-            id = UUID.randomUUID().toString();
-        }
+    public Adresse() {
+        id = UUID.randomUUID().toString();
+    }
 
     public String getId() {
         return id;
