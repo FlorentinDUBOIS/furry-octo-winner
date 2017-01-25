@@ -14,7 +14,6 @@ public class JWTConfiguration {
     public FilterRegistrationBean JWTInterceptor() {
         final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         final String[] paths = new String[] {
-            "/api/article",
             "/api/client",
             "/api/commande",
             "/api/detailscommande",
