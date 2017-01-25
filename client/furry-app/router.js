@@ -1,9 +1,24 @@
-furryApp.config(function($stateProvider, $resourceProvider) {
+furryApp.config(
+  ($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider) => {
 
+  // I18n
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'furry-app/langs/locale-',
+    suffix: '.json'
+  });
+  $translateProvider.determinePreferredLanguage();
+
+  // Auth
+  $httpProvider.interceptors.push('authHttpInterceptor');
+
+  // Router
   $resourceProvider.defaults.stripTrailingSlashes = false;
-
   const STATES = [
     {
+      name: 'registerForm',  
+      url: '/register',
+      component: 'registerFormComponent'
+    }, {
       name: 'loginForm',  
       url: '/login',
       component: 'loginFormComponent'
