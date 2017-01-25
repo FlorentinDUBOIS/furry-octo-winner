@@ -45,6 +45,15 @@ CREATE TABLE detailcommande (
   quantite         INTEGER
 );
 
+CREATE TABLE adresse (
+  id             UUID PRIMARY KEY DEFAULT uuid_in((md5((random())::text))::cstring),
+  ville          VARCHAR(64),
+  cp             VARCHAR(10),
+  adresse        VARCHAR(128),
+  alias          VARCHAR(128),
+  clientid       UUID
+);
+
 --
 -- FOREIGN KEYS LINKS
 --
@@ -59,6 +68,10 @@ FOREIGN KEY (articleid) REFERENCES article (id);
 ALTER TABLE detailcommande
 ADD CONSTRAINT detail_commande_commande_id_fk
 FOREIGN KEY (commandeid) REFERENCES commande (id);
+
+ALTER TABLE adresse
+ADD CONSTRAINT adresse_client_id_fk
+FOREIGN KEY (clientid) REFERENCES client (id);
 
 --
 -- INDEXES
