@@ -10,87 +10,87 @@ public class Commande {
 
     @Id
     @Column(name = "id")
-    private String Id;
+    private String id;
 
     @Column(name = "clientid")
-    private String ClientId;
+    private String clientid;
 
     @Column(name = "datecommande")
-    private Date DateCommande;
+    private Date datecommande;
 
     @Column(name = "tauxtva")
-    private float TauxTVA;
+    private float tauxtva;
 
     @Column(name = "moyenpaiement")
-    private String MoyenPaiement;
+    private String moyenpaiement;
 
     @Column(name = "etapecommande")
-    private Integer EtapeCommande;
+    private Integer etapecommande;
 
     @Column(name = "commandepayee")
-    private Boolean CommandePayee;
+    private Boolean commandepayee;
 
     @Column(name = "commandeannulee")
     private Boolean commandeannulee;
 
     public Commande() {
-        Id = UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString();
     }
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String id) {
-        Id = id;
+        this.id = id;
     }
 
-    public String getClientId() {
-        return ClientId;
+    public String getClientid() {
+        return clientid;
     }
 
-    public void setClientId(String clientId) {
-        ClientId = clientId;
+    public void setClientid(String clientid) {
+        this.clientid = clientid;
     }
 
-    public Date getDateCommande() {
-        return DateCommande;
+    public Date getDatecommande() {
+        return datecommande;
     }
 
-    public void setDateCommande(Date dateCommande) {
-        DateCommande = dateCommande;
+    public void setDatecommande(Date datecommande) {
+        this.datecommande = datecommande;
     }
 
-    public float getTauxTVA() {
-        return TauxTVA;
+    public float getTauxtva() {
+        return tauxtva;
     }
 
-    public void setTauxTVA(float tauxTVA) {
-        TauxTVA = tauxTVA;
+    public void setTauxtva(float tauxtva) {
+        this.tauxtva = tauxtva;
     }
 
-    public String getMoyenPaiement() {
-        return MoyenPaiement;
+    public String getMoyenpaiement() {
+        return moyenpaiement;
     }
 
-    public void setMoyenPaiement(String moyenPaiement) {
-        MoyenPaiement = moyenPaiement;
+    public void setMoyenpaiement(String moyenpaiement) {
+        this.moyenpaiement = moyenpaiement;
     }
 
-    public Integer getEtapeCommande() {
-        return EtapeCommande;
+    public Integer getEtapecommande() {
+        return etapecommande;
     }
 
-    public void setEtapeCommande(Integer etapeCommande) {
-        EtapeCommande = etapeCommande;
+    public void setEtapecommande(Integer etapecommande) {
+        this.etapecommande = etapecommande;
     }
 
-    public Boolean getCommandePayee() {
-        return CommandePayee;
+    public Boolean getCommandepayee() {
+        return commandepayee;
     }
 
-    public void setCommandePayee(Boolean commandePayee) {
-        CommandePayee = commandePayee;
+    public void setCommandepayee(Boolean commandepayee) {
+        this.commandepayee = commandepayee;
     }
 
     public Boolean getCommandeannulee() {
