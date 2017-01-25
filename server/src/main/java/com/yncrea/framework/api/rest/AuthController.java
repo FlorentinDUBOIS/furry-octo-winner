@@ -6,7 +6,6 @@ import com.yncrea.framework.api.rest.pojos.ClientCredentials;
 import com.yncrea.framework.entities.Client;
 import com.yncrea.framework.security.jwt.services.AuthenticationService;
 import com.yncrea.framework.services.ClientService;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 public class AuthController {
@@ -26,16 +24,16 @@ public class AuthController {
     @Autowired
     private ClientService clientService;
 
-    @PostMapping("/api/auth/{Id}")
-    public HashMap<String, String> create(@PathVariable(name = "Id") String Id, @RequestBody ClientCredentials clientCredentials) throws ClientNotFoundException, AuthenticationException {
-        if (!clientService.exists(Id)) {
+    @PostMapping("/api/auth")
+    public HashMap<String, String> create(@RequestBody ClientCredentials clientCredentials) throws ClientNotFoundException, AuthenticationException {
+        Client client = clientService.findByEmail(clientCredentials.getEmail());
+
+        if (client != null) {
             throw new ClientNotFoundException("Unknown client");
         }
 
         HashMap<String, String> object = new HashMap<String, String>();
-        Client client = clientService.findOne(Id);
-
-        if (!BCrypt.checkpw(clientCredentials.getPassword(), client.getHash())) {
+        if (!BCrypt.checkpw(clientCredentials.getMotdepasse(), client.getHash())) {
             throw new AuthenticationException("Password is invalid.");
         }
 

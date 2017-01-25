@@ -11,7 +11,7 @@ furryApp.factory('$User', function($http, jwtHelper) {
        */
       tryLogin: (user) => {
         return new Promise((resolve, reject) => {
-          return $http.post('/api/user', user)
+          return $http.post('/api/auth', user)
           .then((res) => {
             
             let jwt = res.data.jwt;

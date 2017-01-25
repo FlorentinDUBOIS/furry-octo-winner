@@ -1,9 +1,7 @@
-INSERT INTO client (nom, prenom, cp, adresse, ville, email, salt, hash, clientvalide, clientbloque)
+-- password bob
+INSERT INTO client (id, nom, prenom, ville, cp, adresse, email, salt, hash, clientvalide, clientbloque)
   VALUES
-      ('collignon', 'rémi',       '29200', '2 rue maurice le flem', 'brest', 'contact@rcdinfo.fr', '', '', TRUE, FALSE),
-      ('dubois',    'vincent',    '29200', '2 rue maurice le flem', 'brest', 'contact@vincentriouallon.fr', '', '', TRUE, FALSE),
-      ('riouallon', 'florentin',  '29200', '2 rue maurice le flem', 'brest', 'contact@dubois.fr', '', '', TRUE , FALSE),
-      ('morvan',    'guy-yann',   '29200', '2 rue maurice le flem', 'brest', 'contact@morvan.fr', '', '', TRUE , FALSE);
+    ('8f1a7d0f-63ae-416f-98ee-474eb86cdd3f', 'Doe', 'John', 'Londres', 'SW1A', '1AA', 'yolo@swag.penis', '$2a$10$AFM5LgZuHr7UE.EVL2DMlu', '$2a$10$AFM5LgZuHr7UE.EVL2DMluNu4Qc7xAN.jjS6I43a8mECVXjfroCVq', TRUE, FALSE);
 
 INSERT INTO article (nom, reference, prixunitaireht, description)
   VALUES
