@@ -42,6 +42,13 @@ furryApp.config(
           }).$promise;
         }
       }
+    },{
+      name: 'orderCart',
+      url: '/order',
+      component: 'orderCartComponent',
+      data: {
+          authRequired: true
+      }
     }, {
       name: 'contact',
       url: '/contactUs',
