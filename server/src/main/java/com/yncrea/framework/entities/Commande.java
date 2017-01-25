@@ -13,7 +13,7 @@ public class Commande {
     private String Id;
 
     @Column(name = "clientid")
-    private Integer ClientId;
+    private String ClientId;
 
     @Column(name = "datecommande")
     private Date DateCommande;
@@ -41,11 +41,11 @@ public class Commande {
         Id = id;
     }
 
-    public Integer getClientId() {
+    public String getClientId() {
         return ClientId;
     }
 
-    public void setClientId(Integer clientId) {
+    public void setClientId(String clientId) {
         ClientId = clientId;
     }
 
