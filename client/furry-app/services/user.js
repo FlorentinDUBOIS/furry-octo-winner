@@ -1,4 +1,4 @@
-furryApp.factory('$User', ['$resource', function($http) {
+furryApp.factory('$User', function($http, jwtHelper) {
   
   return {
 
@@ -9,19 +9,20 @@ furryApp.factory('$User', ['$resource', function($http) {
        * @param {string} password Password of user
        * @return {Promise} 
        */
-      login: (username, password) => {
+      tryLogin: (user) => {
         return new Promise((resolve, reject) => {
-          return $http.post('/api/user', {
-              username,
-              password
-          })
+          return $http.post('/api/user', user)
           .then((res) => {
-            localStorage.setItem('logged', res.data.jwt );  
+            
+            let jwt = res.data.jwt;
+            if (!jwt) reject("No jwt received");
+            localStorage.setItem('jwt', jwt);  
+            localStorage.setItem('userId', jwtHelper.decodeToken(jwt).clientId);
             resolve();
           })
           .catch((err) => {
             console.error('Something gone wrong when try to log in', err);
-            reject();
+            reject(new Error(err));
           });
         });
       },
@@ -31,7 +32,7 @@ furryApp.factory('$User', ['$resource', function($http) {
        * @return {boolean} user is logged?
        */
       isLoggedIn: () => {
-        let test = localStorage.getItem('logged');
+        let test = localStorage.getItem('jwt');
         if (!test) {
             return false;
         } else {
@@ -55,14 +56,37 @@ furryApp.factory('$User', ['$resource', function($http) {
        */
       register: (user) => {
         return new Promise((resolve, reject) => {
-          return $http.post('/api/user', {user})
+          return $http.post('/api/user', user)
           .then((res) => {
             resolve();
           })
           .catch((err) => {
             console.error('Something gone wrong when try to register in', err);
+            reject(new Error(err));
+          });
+        });
+      },
+
+      /**
+       * Get informations based on existing userId from existing JWT
+       * @return {Promise} Resolve user informations
+       */
+      getInformations: () => {
+        return new Promise((resolve, reject) => {
+        
+          if (!isLoggedIn()) return reject("User not logged in");
+          let userId = localStorage.getItem('userId');
+          if (!userId) return reject("User don't have JWT");
+          
+          $http.get('/api/user', {
+            userId
+          }).then((res) => {
+            console.log(res.data);
+            resolve(res.data);
+          }).catch((err) => {
+            reject(new Error('Failed to get Client informations'));
           });
         });
       }
   }
-}]);
+});
