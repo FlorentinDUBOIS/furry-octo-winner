@@ -5,16 +5,25 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Language" content="en">
         <meta name="viewport" content="width=device-width">
+        <link href="./style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <title>Furry-octo-winner</title>
     </head>
     <body data-ng-app="furryApp">
 
+
+    <section layout="row" layout-align="center center">
+        <md-button class="groupX left">Apple</md-button>
+        <md-button class="groupX middle">Samsung</md-button>
+        <md-button class="groupX middle">Sony</md-button>
+        <md-button class="groupX right">B&amp;O</md-button>
+    </section>
+
         <nav ng-controller="navbarCtrl">
-            <a ui-sref="articleList()">Home Page</a>
-            <a ui-sref="articleList()">New Product</a>
-            <a href="#">Specials</a>
-            <a ng-click="accountLink()">{{account}}</a>
-            <a ui-sref="">Contact us</a>
+            <a ui-sref="articleList()">Accueil</a>
+            <a ui-sref="articleList()">Nouveaux Produits</a>
+            <a href="#">Offres Specialles</a>
+            <a href="javascript:void(0)" ng-click="accountLink()">{{account}}</a>
+            <a ui-sref="contact()">Contact</a>
         </nav>
 
         <ui-view></ui-view>      
@@ -54,6 +63,7 @@
         <script src="furry-app/components/article-details.component.js"></script>
         <script src="furry-app/components/form-login.component.js"></script>
         <script src="furry-app/components/form-register.component.js"></script>
+        <script src="furry-app/components/contact.component.js"></script>
 
         <!-- Imports Controller -->
         <script src="furry-app/components/navbar-ctrl.js"></script>
