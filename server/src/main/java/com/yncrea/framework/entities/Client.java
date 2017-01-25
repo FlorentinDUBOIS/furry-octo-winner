@@ -20,15 +20,6 @@ public class Client {
     @Column(name = "prenom")
     private String prenom;
 
-    @Column(name = "ville")
-    private String ville;
-
-    @Column(name = "cp")
-    private String cp;
-
-    @Column(name = "adresse")
-    private String adresse;
-
     @Column(name = "email")
     private String email;
 
@@ -72,30 +63,6 @@ public class Client {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
-    public String getCp() {
-        return cp;
-    }
-
-    public void setCp(String cp) {
-        this.cp = cp;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
     }
 
     public String getEmail() {

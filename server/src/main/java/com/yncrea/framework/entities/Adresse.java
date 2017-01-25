@@ -6,66 +6,67 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
+@Entity
+@Table(name = "adresse")
 public class Adresse {
 
-        @javax.persistence.Id
+        @Id
         @Column(name = "id")
-        private String Id;
+        private String id;
 
         @Column(name = "ville")
-        private String Ville;
+        private String ville;
 
         @Column(name = "cp")
-        private String CP ;
+        private String cp ;
 
         @Column(name = "adresse")
-        private String Adresse ;
+        private String adresse ;
 
         @Column(name = "alias")
-        private String Alias ;
+        private String alias ;
 
         public Article() {
-            Id = UUID.randomUUID().toString();
+            id = UUID.randomUUID().toString();
         }
 
-        public String getId() {
-            return Id;
-        }
+    public String getId() {
+        return id;
+    }
 
-        public void setId(String id) {
-            Id = id;
-        }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-        public String getVille() {
-            return Ville;
-        }
+    public String getVille() {
+        return ville;
+    }
 
-        public void setVille(String ville) {
-            Ville = ville;
-        }
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
 
-        public String getCP() {
-            return CP;
-        }
+    public String getCp() {
+        return cp;
+    }
 
-        public void setCP(String CP) {
-            this.CP = CP;
-        }
+    public void setCp(String cp) {
+        this.cp = cp;
+    }
 
-        public String getAdresse() {
-            return Adresse;
-        }
+    public String getAdresse() {
+        return adresse;
+    }
 
-        public void setAdresse(String adresse) {
-            Adresse = adresse;
-        }
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
-        public String getAlias() {
-            return Alias;
-        }
+    public String getAlias() {
+        return alias;
+    }
 
-        public void setAlias(String alias) {
-            Alias = alias;
-        }
-
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
 }
