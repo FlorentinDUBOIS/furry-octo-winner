@@ -6,7 +6,6 @@ import com.yncrea.framework.services.DetailCommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RestController
 public class DetailCommandeController implements IController<DetailCommande, String>  {
 

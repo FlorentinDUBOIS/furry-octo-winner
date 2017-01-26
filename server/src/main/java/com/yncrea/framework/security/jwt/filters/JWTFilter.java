@@ -1,12 +1,7 @@
 package com.yncrea.framework.security.jwt.filters;
 
 import com.yncrea.framework.security.jwt.services.AuthenticationService;
-import com.yncrea.framework.services.ClientService;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.security.web.authentication.www.DigestAuthenticationFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -16,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class JWTFilter extends GenericFilterBean {
+public class JWTFilter extends DigestAuthenticationFilter {
 
     @Override
     public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {
