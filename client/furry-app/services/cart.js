@@ -62,8 +62,25 @@ furryApp.factory('$Cart', function() {
     resumeCart: () => {
         return loadExistingCart()
     },
+
+    /**
+     * Sum every counted article
+     * @return {number} Sum of all cart
+     */
+    count: () => {
+      let sum = 0;
+      loadExistingCart().forEach((count) => {
+        sum += count;
+      });
+      return sum;
+    },
+
+    /**
+     * remove every entries of user cart
+     */
     resetCart: () => {
-        localStorageService.clearAll();
+        console.log('Cart is reseted');
+        localStorage.removeItem('clientCart');
     }
   }
 });

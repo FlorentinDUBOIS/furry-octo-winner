@@ -1,0 +1,7 @@
+<button ng-click="cartClear()" ng-if="articles.length > 0">Vider le panier</button>
+<article ng-repeat="article in articles">
+    <p>{{article[0]}}</p> 
+    <p>{{article[1]}}</p>
+    <button ng-click="plus(article[0])">Plus</button>
+    <button ng-click="moins(article[0])">Moins</button>
+</article>
