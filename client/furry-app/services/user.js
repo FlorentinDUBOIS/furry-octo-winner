@@ -7,7 +7,7 @@ furryApp.factory('$User', function($http, jwtHelper) {
        * store JWT if success
        * @param {string} username Email of user
        * @param {string} password Password of user
-       * @return {Promise} 
+       * @return {Promise}
        */
       tryLogin: (user) => {
         return new Promise((resolve, reject) => {
