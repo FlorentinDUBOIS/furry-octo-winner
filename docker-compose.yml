@@ -19,3 +19,12 @@ services:
     - POSTGRES_USER=funnyApp
     - POSTGRES_PASSWORD=funnyApp
     - POSTGRES_DB=funnyApp
+
+  #auto-rebuild:
+  #  build: 
+  #    context: .
+  #    dockerfile: Dockerfile-rebuild
+  #  volumes:
+  #    - ./server:/opt/app
+  #  links:
+  #  - furry-octo-winner:app

@@ -27,6 +27,10 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	dev
+}
+
 dependencies {
 	compile('org.json:json:20160810')
 	compile('io.jsonwebtoken:jjwt:0.6.0')
@@ -39,8 +43,10 @@ dependencies {
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('junit:junit')
+	compile('org.slf4j:slf4j-api:1.7.13')
+	dev("org.springframework.boot:spring-boot-devtools")
 }
 
 bootRun {
-    addResources = true
+    classpath = sourceSets.main.runtimeClasspath + configurations.dev
 }
