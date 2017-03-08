@@ -13,12 +13,13 @@ furryApp.factory('$Prices', function($http) {
           .get(`${api}/latest?base=${nativeCurrency}`)
           .then((response) => {
             changes = response.data;
-            
+            // push native currency
+            changes.rates.EUR = 1;
+          
             invalidCache = !invalidCache;
             setTimeout(() => {
                 invalidCache = !invalidCache;
-            }, 10 * 60 * 1000) // 10m
-            
+            }, 10 * 60 * 1000) // 10m  
             resolve();
           });
         } 
@@ -36,9 +37,7 @@ furryApp.factory('$Prices', function($http) {
       return new Promise((resolve) => {
         load()
         .then(() => {
-          // push native currency
-          changes.rates.EUR = 1;
-          resolve(Object.keys(changes.rates));
+          resolve(Object.keys(changes.rates).sort());
         });
       });
     },

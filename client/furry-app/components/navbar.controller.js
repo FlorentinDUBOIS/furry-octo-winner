@@ -13,5 +13,18 @@ furryApp.controller("navbarCtrl",function($scope,$state,$User, $Cart, $Prices){
       $state.go("loginForm");
     }
   };
+
+  $Prices.availableCurrencies()
+  .then((currencies) => {
+    $scope.currencies = currencies;
+    console.log($Prices.getUserCurrency())
+    $scope.userCurrency = $Prices.getUserCurrency();
+
+    $scope.updateCurrency = () => {
+      $Prices.setUserCurrency($scope.userCurrency);
+    }
+
+    $scope.$apply();
+  });
 });
 
