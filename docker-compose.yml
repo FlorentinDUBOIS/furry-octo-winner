@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  furry-octo-winner:
+    build:
+      context: .
+    ports:
+    - 8080:8080
+    volumes:
+      - ./server:/opt/app
+      - ./client:/opt/app/build/resources/main/public:ro
+    links:
+    - postgresql:db
+  
+  postgresql:
+    build:
+      context: ./sql
+    environment:
+    - POSTGRES_USER=funnyApp
+    - POSTGRES_PASSWORD=funnyApp
+    - POSTGRES_DB=funnyApp

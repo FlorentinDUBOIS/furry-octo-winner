@@ -2,12 +2,14 @@ furryApp.config(
   ($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider) => {
 
   // I18n
-  $translateProvider.useStaticFilesLoader({
+  $translateProvider
+  .useStaticFilesLoader({
     prefix: 'furry-app/langs/locale-',
     suffix: '.json'
-  });
-  $translateProvider.determinePreferredLanguage();
-  $translateProvider.fallbackLanguage('fr_FR');
+  })
+  .determinePreferredLanguage()
+  .fallbackLanguage('fr_FR')
+  .useSanitizeValueStrategy('escape');
 
   // Auth
   $httpProvider.interceptors.push('authHttpInterceptor');

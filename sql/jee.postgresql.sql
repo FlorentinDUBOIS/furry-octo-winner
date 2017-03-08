@@ -1,4 +1,3 @@
-
 --
 -- CREATE TABLE
 --
@@ -51,7 +50,7 @@ CREATE TABLE adresse (
   cp             VARCHAR(10),
   adresse        VARCHAR(128),
   alias          VARCHAR(128),
-  clientid       UUID
+  clientid       varchar(64)
 );
 
 --
