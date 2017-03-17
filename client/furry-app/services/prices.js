@@ -1,10 +1,10 @@
-furryApp.factory('$Prices', function($http) {
+furryApp.factory('$Prices', function($http, $rootScope) {
 
-  const api = 'http://api.fixer.io';
+  const api = 'http://api.fixer.io'
   const nativeCurrency = 'EUR'
 
-  invalidCache = true;
-  changes = {};
+  invalidCache = true
+  changes = {}
 
   load = () => {
       return new Promise((resolve) => {
@@ -12,19 +12,19 @@ furryApp.factory('$Prices', function($http) {
           $http
           .get(`${api}/latest?base=${nativeCurrency}`)
           .then((response) => {
-            changes = response.data;
+            changes = response.data
             // push native currency
-            changes.rates.EUR = 1;
+            changes.rates.EUR = 1
           
-            invalidCache = !invalidCache;
+            invalidCache = !invalidCache
             setTimeout(() => {
-                invalidCache = !invalidCache;
+                invalidCache = !invalidCache
             }, 10 * 60 * 1000) // 10m  
-            resolve();
-          });
+            resolve()
+          })
         } 
-        else resolve();
-      });
+        else resolve()
+      })
     }
 
   return {
@@ -37,9 +37,9 @@ furryApp.factory('$Prices', function($http) {
       return new Promise((resolve) => {
         load()
         .then(() => {
-          resolve(Object.keys(changes.rates).sort());
-        });
-      });
+          resolve(Object.keys(changes.rates).sort())
+        })
+      })
     },
 
     /**
@@ -53,20 +53,28 @@ furryApp.factory('$Prices', function($http) {
         load()    
         .then(() => {
             if (changes.rates[currency] === undefined)
-                reject('This currency is not available');
+                reject('This currency is not available')
             if (changes.rates[currency] < 0) 
-                reject ("Bad currency value, can't convert");
+                reject ("Bad currency value, can't convert")
 
-            resolve(price * changes.rates[currency]);
-        });
-      });
+            resolve(price * changes.rates[currency])
+        })
+      })
+    },
+
+    /**
+     * Convert price to the user currency
+     * @param {number} price 
+     */
+    convertFast(price) {
+      return this.convert(price, this.getUserCurrency())
     },
 
     /**
      * Get user prefered currency
      */
     getUserCurrency() {
-        return localStorage.getItem('currency') || 'EUR';
+        return localStorage.getItem('currency') || 'EUR'
     },
 
     /**
@@ -74,6 +82,8 @@ furryApp.factory('$Prices', function($http) {
      */
     setUserCurrency(currency) {
         localStorage.setItem('currency', currency)
+        $rootScope.$broadcast('currencyChange')
+        console.debug('Broadcast', 'currencyChange')
     }
   }
-});
+})
