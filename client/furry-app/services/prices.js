@@ -1,6 +1,6 @@
 furryApp.factory('$Prices', function($http, $rootScope) {
 
-  const api = 'http://api.fixer.io'
+  const api = 'https://api.fixer.io'
   const nativeCurrency = 'EUR'
 
   invalidCache = true
