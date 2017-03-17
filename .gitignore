@@ -12,5 +12,3 @@
 *.iml
 
 /server/gradle/wrapper/gradle-wrapper.properties
-/server/src/main/resources/application.properties
-
