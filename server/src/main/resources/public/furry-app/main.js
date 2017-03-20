@@ -1,5 +1,6 @@
 const furryApp = angular.module('furryApp', [
   'ngResource',
+  'ngMaterial',
   'ngAria',
   'ngCookies',
   'ngMessages',
