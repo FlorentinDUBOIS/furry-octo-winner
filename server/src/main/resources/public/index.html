@@ -1,125 +1,124 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta http-equiv="Content-Language" content="en">
-        <meta name="viewport" content="width=device-width">
-        <link href="./furry-app/style/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link href="./furry-app/style/angular-material-min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <title>Furry-octo-winner</title>
-    </head>
-    <body data-ng-app="furryApp" ng-cloak="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta http-equiv="Default-Style" content="text/css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div id="lang" ng-controller="langCtrl">
-    <ul>
-        <li><a href="#" ng-click="changeLanguage('fr_FR')">Français</a></li>
-        <li><a href="#" ng-click="changeLanguage('en_EN')">English</a></li>
-    </ul>
+    <title>Furry-octo-winner</title>
 
-    <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
-        <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
-    </select>
-</div>
+    <link rel="stylesheet" type="text/css" href="furry-app/style/style.css" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="furry-app/style/angular-material-min.css" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500">
+  </head>
 
-<br/>
-<br/>
+  <body data-ng-app="furryApp" ng-cloak>
+    <div id="lang" ng-controller="langCtrl">
+        <ul>
+            <li><a href="#" ng-click="changeLanguage('fr_FR')">Français</a></li>
+            <li><a href="#" ng-click="changeLanguage('en_EN')">English</a></li>
+        </ul>
 
-<h1>{{'test' | translate}}</h1>
+        <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
+            <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
+        </select>
+    </div>
+
+    <br/>
+    <br/>
+
+    <h1>{{'test' | translate}}</h1>
+
+    <md-content>
+      <br>
+
+      <md-toolbar class="md-hue-2" ng-controller="navbarCtrl">
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+          </md-button>
+
+          <h2 flex="" md-truncate="">Toolbar with Disabled/Enabled Icon Buttons</h2>
+
+          <md-button class="md-icon-button" aria-label="Favorite">
+            <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+          </md-button>
+
+          <md-button class="md-icon-button" aria-label="More">
+            <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+
+      <br>
+    </md-content>
+
+    <nav ng-controller="navbarCtrl">
+        <a ui-sref="homePage()">{{'navbarHome' | translate}}</a>
+        <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
+        <a ui-sref="specialOffer()">{{'navbarSpecialOffer' | translate}}</a>
+        <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
+        <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
+        <a ui-sref="orderCart()">Panier ({{cartService.count()}})</a>
+        <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
+          <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
+        </select>
+    </nav>
+
+    <ui-view></ui-view>
+
+    <!-- Imports Libraries -->
+    <script src="libs/angular.js"></script>
+    <script src="libs/angular-material-min.js"></script>
+    <script src="libs/angular-animate.js"></script>
+    <script src="libs/angular-aria.js"></script>
+    <script src="libs/angular-cookies.js"></script>
+    <script src="libs/angular-loader.js"></script>
+    <script src="libs/angular-messages.js"></script>
+    <script src="libs/angular-message-format.js"></script>
+    <script src="libs/angular-mocks.js"></script>
+    <script src="libs/angular-parse-ext.js"></script>
+    <script src="libs/angular-resource.js"></script>
+    <script src="libs/angular-route.js"></script>
+    <script src="libs/angular-sanitize.js"></script>
+    <script src="libs/angular-touch.js"></script>
+    <script src="libs/angular-ui-router.js"></script>
+    <script src="libs/angular-translate.js"></script>
+    <script src="libs/angular-translate-loader-url.js"></script>
+    <script src="libs/angular-translate-loader-static-files.js"></script>
+    <script src="libs/angular-jwt.js"></script>
+
+    <!-- Import main -->
+    <script src="furry-app/main.js"></script>
+
+    <!-- Imports Services -->
+    <script src="furry-app/services/article.js"></script>
+    <script src="furry-app/services/cart.js"></script>
+    <script src="furry-app/services/user.js"></script>
+    <script src="furry-app/services/auth.js"></script>
+    <script src="furry-app/services/prices.js"></script>
+    <script src="furry-app/services/filter.price.js"></script>
 
 
-<md-content>
+    <!-- Imports Router -->
+    <script src="furry-app/router.js"></script>
 
-    <br>
+    <!-- Imports Components -->
+    <script src="furry-app/components/articles.component.js"></script>
+    <script src="furry-app/components/article-details.component.js"></script>
+    <script src="furry-app/components/form-login.component.js"></script>
+    <script src="furry-app/components/form-register.component.js"></script>
+    <script src="furry-app/components/contact.component.js"></script>
+    <script src="furry-app/components/order-cart.component.js"></script>
+    <script src="furry-app/components/home-page.component.js"></script>
+    <script src="furry-app/components/special-offer.component.js"></script>
 
-    <md-toolbar class="md-hue-2" ng-controller="navbarCtrl">
-      <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
-          <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-        </md-button>
-
-        <h2 flex="" md-truncate="">Toolbar with Disabled/Enabled Icon Buttons</h2>
-
-        <md-button class="md-icon-button" aria-label="Favorite">
-          <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
-        </md-button>
-
-        <md-button class="md-icon-button" aria-label="More">
-          <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-
-    <br>
-
-    
-  </md-content>
-
-<nav ng-controller="navbarCtrl">
-    <a ui-sref="homePage()">{{'navbarHome' | translate}}</a>
-    <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
-    <a ui-sref="specialOffer()">{{'navbarSpecialOffer' | translate}}</a>
-    <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
-    <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
-    <a ui-sref="orderCart()">Panier ({{cartService.count()}})</a>
-    <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
-      <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
-    </select>
-</nav>
-
-        <ui-view></ui-view>      
-        
-        <!-- Imports Libraries -->
-        <script src="libs/angular.js"></script>
-        <script src="libs/angular-material-min.js"></script>
-        <script src="libs/angular-animate.js"></script>
-        <script src="libs/angular-aria.js"></script>
-        <script src="libs/angular-cookies.js"></script>
-        <script src="libs/angular-loader.js"></script>
-        <script src="libs/angular-messages.js"></script>
-        <script src="libs/angular-message-format.js"></script>
-        <script src="libs/angular-mocks.js"></script>
-        <script src="libs/angular-parse-ext.js"></script>
-        <script src="libs/angular-resource.js"></script>
-        <script src="libs/angular-route.js"></script>
-        <script src="libs/angular-sanitize.js"></script>
-        <script src="libs/angular-touch.js"></script>
-        <script src="libs/angular-ui-router.js"></script>
-        <script src="libs/angular-translate.js"></script>
-        <script src="libs/angular-translate-loader-url.js"></script>
-        <script src="libs/angular-translate-loader-static-files.js"></script>
-        <script src="libs/angular-jwt.js"></script>
-
-
-<script src="furry-app/main.js"></script>
-
-
-<!-- Imports Services -->
-<script src="furry-app/services/article.js"></script>
-<script src="furry-app/services/cart.js"></script>
-<script src="furry-app/services/user.js"></script>
-<script src="furry-app/services/auth.js"></script>
-<script src="furry-app/services/prices.js"></script>
-<script src="furry-app/services/filter.price.js"></script>
-
-
-<!-- Imports Router -->
-<script src="furry-app/router.js"></script>
-
-<!-- Imports Components -->
-<script src="furry-app/components/articles.component.js"></script>
-<script src="furry-app/components/article-details.component.js"></script>
-<script src="furry-app/components/form-login.component.js"></script>
-<script src="furry-app/components/form-register.component.js"></script>
-<script src="furry-app/components/contact.component.js"></script>
-<script src="furry-app/components/order-cart.component.js"></script>
-<script src="furry-app/components/home-page.component.js"></script>
-<script src="furry-app/components/special-offer.component.js"></script>
-
-<!-- Imports Controller -->
-<script src="furry-app/components/navbar.controller.js"></script>
-<script src="furry-app/components/lang.controller.js"></script>
-
-</body>
-
+    <!-- Imports Controller -->
+    <script src="furry-app/components/navbar.controller.js"></script>
+    <script src="furry-app/components/lang.controller.js"></script>
+  </body>
 </html>
