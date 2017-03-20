@@ -56,6 +56,11 @@ furryApp.factory('$User', function($http, jwtHelper) {
        */
       register: (user) => {
         return new Promise((resolve, reject) => {
+
+          if (user.password !== user.passwordAgain) {
+            return reject('Not the same password in both fields')
+          }
+
           return $http.post('/api/user', user)
           .then((res) => {
             resolve();
