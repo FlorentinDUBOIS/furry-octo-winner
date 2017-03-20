@@ -1,16 +1,23 @@
-furryApp.factory('authHttpInterceptor', (jwtHelper) => {
-  return {
-    request: function (config) {
+(function() {
+  angular
+    .module('furryApp')
+    .factory('authHttpInterceptor', authHttpInterceptor)
 
-      // Prevent sending token to external resources
-      if (!config.url.startsWith('http')) {
-        let token = localStorage.getItem('lwt');
-        if (!!token) {
-          config.headers.Authorization = `JWT ${token}`;
+  function authHttpInterceptor(jwtHelper) {
+    return {
+      request(config) {
+        if (!config.url.startsWith('http')) {
+          let token = localStorage.getItem('lwt')
+
+          if (token) {
+            config.headers.Authorization = `JWT ${ token }`
+          }
         }
-        console.log(config)
+
+        return config
       }
-      return config;
     }
-  };
-});
+  }
+
+  authHttpInterceptor.$inject = ['jwtHelper']
+} ())

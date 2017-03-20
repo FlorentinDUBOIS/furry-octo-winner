@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Furry-octo-winner</title>
+    <title>Furry Octo Winner</title>
 
     <link rel="stylesheet" type="text/css" href="furry-app/style/style.css" media="screen,projection" />
     <link rel="stylesheet" type="text/css" href="furry-app/style/angular-material-min.css" media="screen,projection" />
@@ -17,48 +17,28 @@
   </head>
 
   <body data-ng-app="furryApp" ng-cloak>
-    <div id="lang" ng-controller="langCtrl">
-        <ul>
-            <li><a href="#" ng-click="changeLanguage('fr_FR')">Français</a></li>
-            <li><a href="#" ng-click="changeLanguage('en_EN')">English</a></li>
-        </ul>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span>Furry Octo Winner</span>
+      </div>
+    </md-toolbar>
 
-        <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
-            <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
-        </select>
-    </div>
+    <md-content ng-controller="navbarCtrl">
+      <md-nav-bar>
+        <md-nav-item ui-sref="homePage" md-nav-click="goto('homepage')" name="homepage">{{ 'navbarHome' | translate }}</md-nav-item>
+        <md-nav-item ui-sref="articleList" md-nav-click="goto('article-list')" name="article-list">{{ 'navbarNewProduct' | translate }}</md-nav-item>
+        <md-nav-item ui-sref="specialOffer" md-nav-click="goto('special-offer')" name="special-offer">{{ 'navbarSpecialOffer' | translate }}</md-nav-item>
+        <md-nav-item ui-sref="contact" md-nav-click="goto('contact')" name="contact">{{ 'navbarContact' | translate }}</md-nav-item>
+        <span flex></span>
+        <md-nav-item ui-sref="orderCart" md-nav-click="goto('order-cart')" name="cart">{{ 'navbarCart' | translate }} ({{ cartService.count() }})</md-nav-item>
+      </md-nav-bar>
 
-    <br/>
-    <br/>
-
-    <h1>{{'test' | translate}}</h1>
-
-    <md-content>
-      <br>
-
-      <md-toolbar class="md-hue-2" ng-controller="navbarCtrl">
-        <div class="md-toolbar-tools">
-          <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
-            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-          </md-button>
-
-          <h2 flex="" md-truncate="">Toolbar with Disabled/Enabled Icon Buttons</h2>
-
-          <md-button class="md-icon-button" aria-label="Favorite">
-            <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
-          </md-button>
-
-          <md-button class="md-icon-button" aria-label="More">
-            <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
-          </md-button>
-        </div>
-      </md-toolbar>
-
-      <br>
+      <div class="ext-content">
+        <ui-view></ui-view>
+      </div>
     </md-content>
 
-    <nav ng-controller="navbarCtrl">
-        <a ui-sref="homePage()">{{'navbarHome' | translate}}</a>
+     <a ui-sref="homePage()">{{'navbarHome' | translate}}</a>
         <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
         <a ui-sref="specialOffer()">{{'navbarSpecialOffer' | translate}}</a>
         <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
@@ -67,9 +47,6 @@
         <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
           <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
         </select>
-    </nav>
-
-    <ui-view></ui-view>
 
     <!-- Imports Libraries -->
     <script src="libs/angular.js"></script>
@@ -85,7 +62,6 @@
     <script src="libs/angular-resource.js"></script>
     <script src="libs/angular-route.js"></script>
     <script src="libs/angular-sanitize.js"></script>
-    <script src="libs/angular-touch.js"></script>
     <script src="libs/angular-ui-router.js"></script>
     <script src="libs/angular-translate.js"></script>
     <script src="libs/angular-translate-loader-url.js"></script>
@@ -106,6 +82,10 @@
 
     <!-- Imports Router -->
     <script src="furry-app/router.js"></script>
+
+    <!-- Imports constants -->
+    <script src="furry-app/constants/environment.constants.js" ></script>
+    <script src="furry-app/constants/currencies.constants.js" ></script>
 
     <!-- Imports Components -->
     <script src="furry-app/components/articles.component.js"></script>

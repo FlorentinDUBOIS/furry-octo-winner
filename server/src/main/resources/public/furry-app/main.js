@@ -7,7 +7,6 @@ const furryApp = angular.module('furryApp', [
   'ngParseExt',
   'ngRoute',
   'ngSanitize',
-  'ngTouch',
   'ui.router',
   'pascalprecht.translate',
   'angular-jwt'

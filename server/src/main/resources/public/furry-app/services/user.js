@@ -1,7 +1,10 @@
-furryApp.factory('$User', function($http, jwtHelper) {
-  
-  return {
+(function() {
+  angular
+    .module('furryApp')
+    .factory('$User', $User)
 
+  function $User($http, jwtHelper, $q, $log, API) {
+    return {
       /**
        * Send user and password to api
        * store JWT if success
@@ -9,19 +12,19 @@ furryApp.factory('$User', function($http, jwtHelper) {
        * @param {string} password Password of user
        * @return {Promise}
        */
-      tryLogin: (user) => {
-        return new Promise((resolve, reject) => {
-          return $http.post('/api/auth', user)
+      tryLogin(user) {
+        return $q((resolve, reject) => {
+          return $http.post(`${ API }/api/auth`, user)
           .then((res) => {
-            
+
             let jwt = res.data.token;
             if (!jwt) reject("No jwt received");
-            localStorage.setItem('jwt', jwt);  
+            localStorage.setItem('jwt', jwt);
             localStorage.setItem('userId', jwtHelper.decodeToken(jwt).sub);
             resolve();
           })
           .catch((err) => {
-            console.error('Something gone wrong when try to log in', err);
+            $log.error('Something gone wrong when try to log in', err);
             reject(new Error(err));
           });
         });
@@ -31,7 +34,7 @@ furryApp.factory('$User', function($http, jwtHelper) {
        * Check if current user is logged in
        * @return {boolean} user is logged?
        */
-      isLoggedIn: () => {
+      isLoggedIn() {
         let test = localStorage.getItem('jwt');
         if (!test) {
             return false;
@@ -43,7 +46,7 @@ furryApp.factory('$User', function($http, jwtHelper) {
       /**
        * Remove stored token
        */
-      logout: () => {
+      logout() {
         if (isLoggedIn()) {
           localStorage.removeItem('logged');
         }
@@ -54,8 +57,8 @@ furryApp.factory('$User', function($http, jwtHelper) {
        * @param {Object} user Object with all user model properties
        * @return {Promise} resolved when user is created
        */
-      register: (user) => {
-        return new Promise((resolve, reject) => {
+      register(user) {
+        return $q((resolve, reject) => {
 
           if (user.password !== user.passwordAgain) {
             return reject('Not the same password in both fields')
@@ -66,7 +69,7 @@ furryApp.factory('$User', function($http, jwtHelper) {
             resolve();
           })
           .catch((err) => {
-            console.error('Something gone wrong when try to register in', err);
+            $log.error('Something gone wrong when try to register in', err);
             reject(new Error(err));
           });
         });
@@ -76,20 +79,24 @@ furryApp.factory('$User', function($http, jwtHelper) {
        * Get informations based on existing userId from existing JWT
        * @return {Promise} Resolve user informations
        */
-      getInformations: () => {
-        return new Promise((resolve, reject) => {
-        
+      getInformations() {
+        return $q((resolve, reject) => {
+
           //if (!isLoggedIn()) return reject("User not logged in");
           let userId = localStorage.getItem('userId');
           if (!userId) return reject("User don't have JWT");
-          
+
           $http.get(`/api/client/${userId}`).then((res) => {
-            console.log(res.data);
+            $log.info(res.data);
             resolve(res.data);
           }).catch((err) => {
             reject(new Error('Failed to get Client informations'));
           });
         });
       }
+    }
+
+    $User.$inject = ['$http', 'jwtHelper', '$q', '$log']
   }
-});
+} ())
+

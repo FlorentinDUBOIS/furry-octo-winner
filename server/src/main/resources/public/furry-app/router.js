@@ -18,15 +18,15 @@ furryApp.config(
   $resourceProvider.defaults.stripTrailingSlashes = false;
   const STATES = [
     {
-      name: 'registerForm',  
+      name: 'registerForm',
       url: '/register',
       component: 'registerFormComponent'
     }, {
-      name: 'loginForm',  
+      name: 'loginForm',
       url: '/login',
       component: 'loginFormComponent'
     }, {
-      name: 'articleList',  
+      name: 'articleList',
       url: '/article',
       component: 'articlesComponent',
       resolve: {

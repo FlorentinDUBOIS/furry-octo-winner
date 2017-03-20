@@ -1,86 +1,94 @@
-furryApp.factory('$Cart', function() {
+(function () {
+  angular
+    .module('furryApp')
+    .factory('$Cart', $Cart)
 
-  /**
-   * Fetch an existing cart in browser
-   * @return {Map} a new or a filled map of articles
-   */
-  loadExistingCart = () => {
-    let cart = localStorage.clientCart;
-    if (cart != null)
-        return new Map(JSON.parse(cart));
-    else
-        return new Map();
-  };
-  
-  /**
-   * Save an altered cart
-   * @param {Map} map Map 
-   */
-  saveCart = (map) => {
-    return localStorage.clientCart = JSON.stringify(Array.from(map.entries()));
-  };
+  function $Cart($log) {
+    return {
+      addArticle(articleId) {
+        $log.info(`Add to cart: ${ articleId }`)
 
-  return {
+        let cart = loadExistingCart()
 
-    /**
-     * Increment count of article in client cart
-     * @param {string} articleId Article UUID
-     */
-    addArticle: (articleId) => {
-        console.log(`Add to cart: ${articleId}`);
-
-        let cart = loadExistingCart();
         if (cart.has(articleId)) {
-          cart.set(articleId, cart.get(articleId) + 1);
+          cart.set(articleId, cart.get(articleId) + 1)
         } else {
-          cart.set(articleId, 1);
+          cart.set(articleId, 1)
         }
-        saveCart(cart);
-    },
-    /**
-     * Decrement count of article in client cart
-     * @param {string} articleId Article UUID
-     */
-    removeArticle: (articleId) => {
-      console.log(`Remove from cart: ${articleId}`);
 
-      let cart = loadExistingCart();
-      if (cart.has(articleId)) {
-        let articleCount = cart.get(articleId);
-        if (articleCount > 1) {
-          cart.set(articleId, articleCount -1);
-        } else {
-          cart.delete(articleId);
+        saveCart(cart)
+      },
+
+      /**
+       * Decrement count of article in client cart
+       * @param {string} articleId Article UUID
+       */
+      removeArticle(articleId) {
+        $log.info(`Remove from cart: ${articleId}`);
+
+        let cart = loadExistingCart()
+        if (cart.has(articleId)) {
+          let articleCount = cart.get(articleId)
+          if (articleCount > 1) {
+            cart.set(articleId, articleCount -1)
+          } else {
+            cart.delete(articleId)
+          }
+
+          return saveCart(cart)
         }
-        return saveCart(cart);
-      }
-    },
-    /**
-     * Get all items in cart with count for each
-     * @return {Map} Map of articleId => count
-     */
-    resumeCart: () => {
+      },
+
+      /**
+       * Get all items in cart with count for each
+       * @return {Map} Map of articleId => count
+       */
+      resumeCart() {
         return loadExistingCart()
-    },
+      },
+
+      /**
+       * Sum every counted article
+       * @return {number} Sum of all cart
+       */
+      count() {
+        return Array
+          .from(loadExistingCart())
+          .reduce((acc, val, i) => acc + 1, 0)
+      },
+
+      /**
+       * remove every entries of user cart
+       */
+      resetCart() {
+          $log.info('Cart is reseted')
+
+          localStorage.removeItem('clientCart')
+      }
+    }
+
+    /////////////////////
 
     /**
-     * Sum every counted article
-     * @return {number} Sum of all cart
+     * Fetch an existing cart in browser
+     * @return {Map} a new or a filled map of articles
      */
-    count: () => {
-      let sum = 0;
-      loadExistingCart().forEach((count) => {
-        sum += count;
-      });
-      return sum;
-    },
+    function loadExistingCart() {
+      if (localStorage.clientCart) {
+        return new Map(JSON.parse(cart))
+      }
+
+      return new Map()
+    }
 
     /**
-     * remove every entries of user cart
+     * Save an altered cart
+     * @param {Map} map Map
      */
-    resetCart: () => {
-        console.log('Cart is reseted');
-        localStorage.removeItem('clientCart');
+    function saveCart(map) {
+      return localStorage.clientCart = JSON.stringify(Array.from(map.entries()));
     }
   }
-});
+
+  $Cart.$inject = ['$log']
+} ())
