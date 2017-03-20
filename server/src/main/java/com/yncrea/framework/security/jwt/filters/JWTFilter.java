@@ -1,17 +1,27 @@
 package com.yncrea.framework.security.jwt.filters;
 
 import com.yncrea.framework.security.jwt.services.AuthenticationService;
+import org.springframework.boot.autoconfigure.jersey.JerseyProperties;
 import org.springframework.security.web.authentication.www.DigestAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class JWTFilter extends DigestAuthenticationFilter {
+@Component
+public class JWTFilter implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
 
     @Override
     public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {
