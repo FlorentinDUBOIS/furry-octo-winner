@@ -1,4 +1,4 @@
-furryApp.controller("navbarCtrl",function($scope,$state,$User, $Cart, $Prices){
+furryApp.controller("navbarCtrl",function($scope,$state,$User, $Cart){
   if ($User.isLoggedIn())
     $scope.account="navbarMyAccount";
   else $scope.account='navbarLogin';
@@ -14,17 +14,6 @@ furryApp.controller("navbarCtrl",function($scope,$state,$User, $Cart, $Prices){
     }
   };
 
-  $Prices.availableCurrencies()
-  .then((currencies) => {
-    $scope.currencies = currencies;
-    console.log($Prices.getUserCurrency())
-    $scope.userCurrency = $Prices.getUserCurrency();
 
-    $scope.updateCurrency = () => {
-      $Prices.setUserCurrency($scope.userCurrency);
-    }
-
-    $scope.$apply();
-  });
 });
 

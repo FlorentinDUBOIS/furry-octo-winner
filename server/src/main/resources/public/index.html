@@ -15,6 +15,10 @@
         <li><a href="#" ng-click="changeLanguage('fr_FR')">Français</a></li>
         <li><a href="#" ng-click="changeLanguage('en_EN')">English</a></li>
     </ul>
+
+    <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
+        <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
+    </select>
 </div>
 
 <br/>
@@ -30,9 +34,7 @@
     <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
     <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
     <a ui-sref="orderCart()">Panier ({{cartService.count()}})</a>
-    <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
-      <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
-    </select>
+
 </nav>
 
         <ui-view></ui-view>      
