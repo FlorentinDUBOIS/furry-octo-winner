@@ -15,13 +15,11 @@ import java.util.Properties;
 @Service
 public class AuthenticationService {
 
+    @Value("${application.security.jwt.expiration.time}")
     private Integer expirationTime;
-    private String secret;
 
-    public AuthenticationService() {
-        expirationTime = 216000000;
-        secret = "it's a secret";
-    }
+    @Value("${application.security.jwt.secret}")
+    private String secret;
 
     public String genToken(Client client) {
         return Jwts
