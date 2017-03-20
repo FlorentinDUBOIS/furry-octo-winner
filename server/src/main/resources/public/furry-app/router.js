@@ -1,5 +1,5 @@
 furryApp.config(
-  ($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider) => {
+  ($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider, languages) => {
 
   // I18n
   $translateProvider
@@ -9,6 +9,7 @@ furryApp.config(
   })
   .determinePreferredLanguage()
   .fallbackLanguage('fr_FR')
+  .registerAvailableLanguageKeys(languages)
   .useSanitizeValueStrategy('escape');
 
   // Auth
