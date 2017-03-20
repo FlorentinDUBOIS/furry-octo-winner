@@ -11,7 +11,7 @@ furryApp.factory('$User', function($http, jwtHelper) {
        */
       tryLogin: (user) => {
         return new Promise((resolve, reject) => {
-          return $http.post('http://127.0.0.1:8080/api/auth', user)
+          return $http.post('/api/auth', user)
           .then((res) => {
             
             let jwt = res.data.token;
@@ -56,7 +56,7 @@ furryApp.factory('$User', function($http, jwtHelper) {
        */
       register: (user) => {
         return new Promise((resolve, reject) => {
-          return $http.post('http://127.0.0.1:8080/api/user', user)
+          return $http.post('/api/user', user)
           .then((res) => {
             resolve();
           })
@@ -78,7 +78,7 @@ furryApp.factory('$User', function($http, jwtHelper) {
           let userId = localStorage.getItem('userId');
           if (!userId) return reject("User don't have JWT");
           
-          $http.get(`http://127.0.0.1:8080/api/client/${userId}`).then((res) => {
+          $http.get(`/api/client/${userId}`).then((res) => {
             console.log(res.data);
             resolve(res.data);
           }).catch((err) => {

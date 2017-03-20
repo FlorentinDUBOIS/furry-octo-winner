@@ -1,12 +1,14 @@
 
 # IntelliJ IDE
 /.idea/
+/.vscode
 /server/.idea/
 /server/src/main/main.iml
 /server/.gradle
 /server/build
 /client/.idea/
 
-/server/gradle/wrapper/gradle-wrapper.properties
-/server/src/main/resources/application.properties
+.gradle
+*.iml
 
+/server/gradle/wrapper/gradle-wrapper.properties

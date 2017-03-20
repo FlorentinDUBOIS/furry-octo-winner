@@ -2,7 +2,7 @@
 <article ng-repeat="article in $ctrl.articles">
     <h4 ng-click="showArticle(article.id)">{{ article.nom }}</h4>
     <small>{{ article.reference }}</small>
-    <p>{{ article.prixUnitaireHT | currency:"€":2 }}</p>
+    <p data-price="" amount="article.prixunitaireht"></p>
     <p>{{ article.description }}</p>
     <button ng-click="addToCart(article.id)">Ajouter</button>
     <button ng-click="removeFromCart(article.id)">Supprimer</button>
