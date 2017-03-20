@@ -1,4 +1,8 @@
 {
+  "fr_FR" : "Français",
+  "en_EN" : "Anglais",
+  "de_DE" : "Allemand",
+  "es_ES" : "Espagnol",
   "test": "francais",
   "navbarHome": "Accueil",
   "navbarNewProduct": "Nouveaux produits",

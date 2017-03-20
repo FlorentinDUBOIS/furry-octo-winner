@@ -1,3 +1,5 @@
 {
-  "test" : "anglais"
+  "test": "anglais",
+  "fr_FR": "French",
+  "en_EN": "English",
 }
