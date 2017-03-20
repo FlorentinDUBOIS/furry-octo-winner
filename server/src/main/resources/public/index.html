@@ -1,104 +1,118 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html">
-    <meta http-equiv="Default-Style" content="text/css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Furry Octo Winner</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta http-equiv="Default-Style" content="text/css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="furry-app/style/style.css" media="screen,projection" />
-    <link rel="stylesheet" type="text/css" href="furry-app/style/angular-material-min.css" media="screen,projection" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500">
-  </head>
+  <title>Furry Octo Winner</title>
 
-  <body data-ng-app="furryApp" ng-cloak>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <span>Furry Octo Winner</span>
-      </div>
-    </md-toolbar>
+  <link rel="stylesheet" type="text/css" href="furry-app/style/style.css" media="screen,projection" />
+  <link rel="stylesheet" type="text/css" href="furry-app/style/angular-material-min.css" media="screen,projection" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500">
+</head>
 
-    <md-content ng-controller="navbarCtrl">
-      <md-nav-bar>
-        <md-nav-item ui-sref="homePage" md-nav-click="goto('homepage')" name="homepage">{{ 'navbarHome' | translate }}</md-nav-item>
-        <md-nav-item ui-sref="articleList" md-nav-click="goto('article-list')" name="article-list">{{ 'navbarNewProduct' | translate }}</md-nav-item>
-        <md-nav-item ui-sref="specialOffer" md-nav-click="goto('special-offer')" name="special-offer">{{ 'navbarSpecialOffer' | translate }}</md-nav-item>
-        <md-nav-item ui-sref="contact" md-nav-click="goto('contact')" name="contact">{{ 'navbarContact' | translate }}</md-nav-item>
-        <span flex></span>
-        <md-nav-item ui-sref="orderCart" md-nav-click="goto('order-cart')" name="cart">{{ 'navbarCart' | translate }} ({{ cartService.count() }})</md-nav-item>
-      </md-nav-bar>
+<body data-ng-app="furryApp" ng-cloak>
+  <md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <md-menu md-position-mode="target-right target" ng-controller="langCtrl">
+        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+          <md-icon>g_translate</md-icon>
+        </md-button>
+        <md-menu-content>
+          <md-menu-item ng-repeat="lang in languages">
+            <md-button>
+              <md-icon md-svg-src="furry-app/img/icons/languages/{{lang}}.svg" ></md-icon> {{lang | translate}}
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </md-toolbar>
 
-      <div class="ext-content">
-        <ui-view></ui-view>
-      </div>
-    </md-content>
+  <md-content ng-controller="navbarCtrl">
+    <md-nav-bar>
+      <md-nav-item ui-sref="homePage" md-nav-click="goto('homepage')" name="homepage">{{ 'navbarHome' | translate }}</md-nav-item>
+      <md-nav-item ui-sref="articleList" md-nav-click="goto('article-list')" name="article-list">{{ 'navbarNewProduct' | translate }}</md-nav-item>
+      <md-nav-item ui-sref="specialOffer" md-nav-click="goto('special-offer')" name="special-offer">{{ 'navbarSpecialOffer' | translate }}</md-nav-item>
+      <md-nav-item ui-sref="contact" md-nav-click="goto('contact')" name="contact">{{ 'navbarContact' | translate }}</md-nav-item>
+      <span flex></span>
+      <md-nav-item ui-sref="orderCart" md-nav-click="goto('order-cart')" name="cart">{{ 'navbarCart' | translate }} ({{ cartService.count() }})</md-nav-item>
+    </md-nav-bar>
 
-     <a ui-sref="homePage()">{{'navbarHome' | translate}}</a>
-        <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
-        <a ui-sref="specialOffer()">{{'navbarSpecialOffer' | translate}}</a>
-        <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
-        <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
-        <a ui-sref="orderCart()">Panier ({{cartService.count()}})</a>
-        <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
+    <div class="ext-content">
+      <ui-view></ui-view>
+    </div>
+  </md-content>
+
+  <a ui-sref="homePage()">{{'navbarHome' | translate}}</a>
+  <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
+  <a ui-sref="specialOffer()">{{'navbarSpecialOffer' | translate}}</a>
+  <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
+  <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
+  <a ui-sref="orderCart()">Panier ({{cartService.count()}})</a>
+  <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
           <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
         </select>
 
-    <!-- Imports Libraries -->
-    <script src="libs/angular.js"></script>
-    <script src="libs/angular-material-min.js"></script>
-    <script src="libs/angular-animate.js"></script>
-    <script src="libs/angular-aria.js"></script>
-    <script src="libs/angular-cookies.js"></script>
-    <script src="libs/angular-loader.js"></script>
-    <script src="libs/angular-messages.js"></script>
-    <script src="libs/angular-message-format.js"></script>
-    <script src="libs/angular-mocks.js"></script>
-    <script src="libs/angular-parse-ext.js"></script>
-    <script src="libs/angular-resource.js"></script>
-    <script src="libs/angular-route.js"></script>
-    <script src="libs/angular-sanitize.js"></script>
-    <script src="libs/angular-ui-router.js"></script>
-    <script src="libs/angular-translate.js"></script>
-    <script src="libs/angular-translate-loader-url.js"></script>
-    <script src="libs/angular-translate-loader-static-files.js"></script>
-    <script src="libs/angular-jwt.js"></script>
+  <!-- Imports Libraries -->
+  <script src="libs/angular.js"></script>
+  <script src="libs/angular-material-min.js"></script>
+  <script src="libs/angular-animate.js"></script>
+  <script src="libs/angular-aria.js"></script>
+  <script src="libs/angular-cookies.js"></script>
+  <script src="libs/angular-loader.js"></script>
+  <script src="libs/angular-messages.js"></script>
+  <script src="libs/angular-message-format.js"></script>
+  <script src="libs/angular-mocks.js"></script>
+  <script src="libs/angular-parse-ext.js"></script>
+  <script src="libs/angular-resource.js"></script>
+  <script src="libs/angular-route.js"></script>
+  <script src="libs/angular-sanitize.js"></script>
+  <script src="libs/angular-ui-router.js"></script>
+  <script src="libs/angular-translate.js"></script>
+  <script src="libs/angular-translate-loader-url.js"></script>
+  <script src="libs/angular-translate-loader-static-files.js"></script>
+  <script src="libs/angular-jwt.js"></script>
 
-    <!-- Import main -->
-    <script src="furry-app/main.js"></script>
+  <!-- Import main -->
+  <script src="furry-app/main.js"></script>
 
-    <!-- Imports Services -->
-    <script src="furry-app/services/article.js"></script>
-    <script src="furry-app/services/cart.js"></script>
-    <script src="furry-app/services/user.js"></script>
-    <script src="furry-app/services/auth.js"></script>
-    <script src="furry-app/services/prices.js"></script>
-    <script src="furry-app/services/filter.price.js"></script>
+  <!-- Imports Services -->
+  <script src="furry-app/services/article.js"></script>
+  <script src="furry-app/services/cart.js"></script>
+  <script src="furry-app/services/user.js"></script>
+  <script src="furry-app/services/auth.js"></script>
+  <script src="furry-app/services/prices.js"></script>
+  <script src="furry-app/services/filter.price.js"></script>
 
 
-    <!-- Imports Router -->
-    <script src="furry-app/router.js"></script>
+  <!-- Imports Router -->
+  <script src="furry-app/router.js"></script>
 
-    <!-- Imports constants -->
-    <script src="furry-app/constants/environment.constants.js" ></script>
-    <script src="furry-app/constants/currencies.constants.js" ></script>
+  <!-- Imports constants -->
+  <script src="furry-app/constants/languages.constants.js"></script>
+  <script src="furry-app/constants/environment.constants.js"></script>
+  <script src="furry-app/constants/currencies.constants.js"></script>
 
-    <!-- Imports Components -->
-    <script src="furry-app/components/articles.component.js"></script>
-    <script src="furry-app/components/article-details.component.js"></script>
-    <script src="furry-app/components/form-login.component.js"></script>
-    <script src="furry-app/components/form-register.component.js"></script>
-    <script src="furry-app/components/contact.component.js"></script>
-    <script src="furry-app/components/order-cart.component.js"></script>
-    <script src="furry-app/components/home-page.component.js"></script>
-    <script src="furry-app/components/special-offer.component.js"></script>
+  <!-- Imports Components -->
+  <script src="furry-app/components/articles.component.js"></script>
+  <script src="furry-app/components/article-details.component.js"></script>
+  <script src="furry-app/components/form-login.component.js"></script>
+  <script src="furry-app/components/form-register.component.js"></script>
+  <script src="furry-app/components/contact.component.js"></script>
+  <script src="furry-app/components/order-cart.component.js"></script>
+  <script src="furry-app/components/home-page.component.js"></script>
+  <script src="furry-app/components/special-offer.component.js"></script>
 
-    <!-- Imports Controller -->
-    <script src="furry-app/components/navbar.controller.js"></script>
-    <script src="furry-app/components/lang.controller.js"></script>
-  </body>
+  <!-- Imports Controller -->
+  <script src="furry-app/components/navbar.controller.js"></script>
+  <script src="furry-app/components/lang.controller.js"></script>
+</body>
+
 </html>
