@@ -67,7 +67,6 @@
       }
     }
 
-    /////////////////////
 
     /**
      * Fetch an existing cart in browser
@@ -75,7 +74,7 @@
      */
     function loadExistingCart() {
       if (localStorage.clientCart) {
-        return new Map(JSON.parse(cart))
+        return new Map(JSON.parse(localStorage.clientCart))
       }
 
       return new Map()
