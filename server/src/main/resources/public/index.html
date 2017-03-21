@@ -20,18 +20,35 @@
 <body data-ng-app="furryApp" ng-cloak>
   <md-toolbar class="md-hue-2">
     <div class="md-toolbar-tools">
-      <md-menu md-position-mode="target-right target" ng-controller="langCtrl">
+
+      <md-menu md-position-mode="target-right target" ng-controller="currencyCtrl">
         <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
-          <md-icon>g_translate</md-icon>
+          <md-icon md-svg-src="furry-app/img/icons/changeCurrency.svg"></md-icon>
         </md-button>
         <md-menu-content>
           <md-menu-item ng-repeat="lang in languages">
             <md-button>
-              <md-icon md-svg-src="furry-app/img/icons/languages/{{lang}}.svg" ></md-icon> {{lang | translate}}
+              <md-icon md-svg-src="furry-app/img/icons/languages/{{lang}}.svg"></md-icon> {{lang | translate}}
             </md-button>
           </md-menu-item>
         </md-menu-content>
       </md-menu>
+
+
+      <md-menu md-position-mode="target-right target" ng-controller="langCtrl">
+        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+          <md-icon>translate</md-icon>
+        </md-button>
+        <md-menu-content>
+          <md-menu-item ng-repeat="lang in languages">
+            <md-button ng-click="changeLanguage(lang)">
+              <md-icon md-svg-src="furry-app/img/icons/languages/{{lang}}.svg"></md-icon> {{lang | translate}}
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+
+
     </div>
   </md-toolbar>
 
@@ -109,6 +126,7 @@
   <script src="furry-app/components/order-cart.component.js"></script>
   <script src="furry-app/components/home-page.component.js"></script>
   <script src="furry-app/components/special-offer.component.js"></script>
+  <script src="furry-app/components/currency.component.js"></script>
 
   <!-- Imports Controller -->
   <script src="furry-app/components/navbar.controller.js"></script>
