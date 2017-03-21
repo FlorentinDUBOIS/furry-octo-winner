@@ -23,7 +23,7 @@
 
 
 
-      <h2 flex md-truncate>Toolbar with Disabled/Enabled Icon Buttons</h2>
+      <h2 flex md-truncate>Furry Octo Winner</h2>
 
       <md-menu md-position-mode="target-right target" ng-controller="currencyCtrl">
         <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
@@ -31,8 +31,9 @@
         </md-button>
         <md-menu-content>
           <md-menu-item ng-repeat="currency in currencies">
-            <md-button>
-              {{currency}}
+            <md-button ng-click="setUserCurrency(currency)" ng-class="{selectedButton: currency==userCurrency}">
+              <span class="symbol">{{CurrenciesSymbol[currency]}}</span>
+               {{currency}}
             </md-button>
           </md-menu-item>
         </md-menu-content>
