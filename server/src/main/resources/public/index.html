@@ -71,16 +71,6 @@
     </div>
   </md-content>
 
-  <a ui-sref="homePage()">{{'navbarHome' | translate}}</a>
-  <a ui-sref="articleList()">{{'navbarNewProduct' | translate}}</a>
-  <a ui-sref="specialOffer()">{{'navbarSpecialOffer' | translate}}</a>
-  <a href="javascript:void(0)" ng-click="accountLink()">{{account | translate}}</a>
-  <a ui-sref="contact()">{{'navbarContact' | translate}}</a>
-  <a ui-sref="orderCart()">Panier ({{cartService.count()}})</a>
-  <select name="currency" ng-model="userCurrency" ng-change="updateCurrency()">
-          <option ng-repeat="c in currencies" ng-value="c">{{c}}</option>
-        </select>
-
   <!-- Imports Libraries -->
   <script src="libs/angular.js"></script>
   <script src="libs/angular-material-min.js"></script>
