@@ -54,7 +54,7 @@
       count() {
         return Array
           .from(loadExistingCart())
-          .reduce((acc, val, i) => acc + 1, 0)
+          .reduce((acc, val, i) => acc + val[1], 0)
       },
 
       /**
