@@ -7,11 +7,11 @@ furryApp
 
   templateUrl: 'furry-app/templates/articles.html',
            
-  controller: function($scope, $state, $Cart) {
+  controller: function($scope, $state, $Cart, $log) {
       $scope.$watch('$ctrl.articles', (oValue, nValue) => {
         this.articles = nValue;
       });
-      console.log('Actual Cart :', $Cart.resumeCart());
+      $log.info('Actual Cart :', $Cart.resumeCart());
 
       $scope.showArticle = (articleId) => {
         console.log(`[state] go to article ${articleId}`);
