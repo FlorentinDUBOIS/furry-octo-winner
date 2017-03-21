@@ -21,19 +21,22 @@
   <md-toolbar class="md-hue-2">
     <div class="md-toolbar-tools">
 
+
+
+      <h2 flex md-truncate>Toolbar with Disabled/Enabled Icon Buttons</h2>
+
       <md-menu md-position-mode="target-right target" ng-controller="currencyCtrl">
         <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
           <md-icon md-svg-src="furry-app/img/icons/changeCurrency.svg"></md-icon>
         </md-button>
         <md-menu-content>
-          <md-menu-item ng-repeat="lang in languages">
+          <md-menu-item ng-repeat="currency in currencies">
             <md-button>
-              <md-icon md-svg-src="furry-app/img/icons/languages/{{lang}}.svg"></md-icon> {{lang | translate}}
+              {{currency}}
             </md-button>
           </md-menu-item>
         </md-menu-content>
       </md-menu>
-
 
       <md-menu md-position-mode="target-right target" ng-controller="langCtrl">
         <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
