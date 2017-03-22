@@ -16,10 +16,6 @@ a {
     color: inherit;
 }
 
-* {
-    transition: all 0.2s;
-}
-
 @media(min-width: 800px) {
     form[name="contact"] {
         min-width: 600px;
