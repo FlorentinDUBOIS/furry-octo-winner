@@ -3,7 +3,7 @@
     .module('furryApp')
     .config(RouterConfig)
 
-  function RouterConfig($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider, languages) {
+  function RouterConfig($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider, $urlRouterProvider, languages) {
     // I18n
     $translateProvider
       .useStaticFilesLoader({
@@ -20,6 +20,7 @@
 
     // Router
     $resourceProvider.defaults.stripTrailingSlashes = false;
+    $urlRouterProvider.when('', '/')
 
     const states = [{
       name: 'registerForm',
@@ -77,5 +78,5 @@
     states.forEach(state => $stateProvider.state(state))
   }
 
-  RouterConfig.$inject = ['$stateProvider', '$resourceProvider', '$translateProvider', '$uiRouterProvider', '$httpProvider', 'languages']
+  RouterConfig.$inject = ['$stateProvider', '$resourceProvider', '$translateProvider', '$uiRouterProvider', '$httpProvider', '$urlRouterProvider', 'languages']
 } ())

@@ -1,0 +1,13 @@
+<div style="display: flex; flex-direction: row; align-items: center">
+  <i style="padding-right: 0.4rem" class='material-icons'>search</i>
+  <md-autocomplete
+    md-selected-item="selectedArticle"
+    md-selected-item-change="go(selectedArticle)"
+    md-search-text="searchText"
+    md-items="article in getMatches(searchText)"
+    md-item-text="article.nom"
+    md-min-length="0"
+    placeholder="Looking for something ?">
+      <span ng-click="go(article)">{{article.nom}}</span>
+  </md-autocomplete>
+</div>
