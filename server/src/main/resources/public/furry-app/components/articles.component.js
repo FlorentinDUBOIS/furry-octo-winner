@@ -24,8 +24,14 @@
       });
     }
 
-    $scope.addToCart = function (articleId) {
-      $Cart.addArticle(articleId);
+    $scope.range = function (num) {
+      return new Array(num);
+    }
+
+    $scope.addToCart = function (articleId, size) {
+      size = parseInt(size);
+      if (!size) size = 1;
+      $Cart.addArticle(articleId, size);
     }
 
     $scope.removeFromCart = function (articleId) {
@@ -34,4 +40,4 @@
   }
 
   articlesComponent.$inject = ['$scope', '$state', '$Cart', '$log']
-} ())
+}())

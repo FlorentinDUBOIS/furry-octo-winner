@@ -5,15 +5,15 @@
 
   function $Cart($log) {
     return {
-      addArticle(articleId) {
-        $log.info(`Add to cart: ${articleId}`)
+      addArticle(articleId, size) {
+        $log.info(`Add to cart: ${articleId} and ${size} item(s)`)
 
         let cart = loadExistingCart()
 
         if (cart.has(articleId)) {
-          cart.set(articleId, cart.get(articleId) + 1)
+          cart.set(articleId, cart.get(articleId) + size)
         } else {
-          cart.set(articleId, 1)
+          cart.set(articleId, size)
         }
 
         saveCart(cart)

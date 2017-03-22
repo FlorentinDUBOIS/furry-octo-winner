@@ -15,5 +15,9 @@
   "contactMail" : "Mél" ,
   "contactMessage" : "Message" ,
   "contactSubject" : "Sujet" ,
-  "contactSendButton" : "Envoyer"
+  "contactSendButton" : "Envoyer",
+
+  "articleAdd": "Ajouter",
+
+  "quantity": "Quantité"
 }

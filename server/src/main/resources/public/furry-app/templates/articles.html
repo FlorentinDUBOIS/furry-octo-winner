@@ -1,9 +1,28 @@
 <h1>Liste des produits</h1>
-<article ng-repeat="article in $ctrl.articles">
-    <h4 ng-click="showArticle(article.id)">{{ article.nom }}</h4>
-    <small>{{ article.reference }}</small>
-    <p data-price="" amount="article.prixunitaireht"></p>
-    <p>{{ article.description }}</p>
-    <button ng-click="addToCart(article.id)">Ajouter</button>
-    <button ng-click="removeFromCart(article.id)">Supprimer</button>
-</article>
+<div class='md-padding' layout="row" layout-wrap>
+    <article ng-repeat="article in $ctrl.articles" flex-xs="100" flex-gt-xs="25" layout="column">
+        <md-card>
+            <img ng-src="furry-app/img/product/example.png" class="md-card-image" alt="{{ article.nom }}" ng-click="showArticle(article.id)">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline" ng-click="showArticle(article.id)">{{ article.nom }}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <small>{{ article.reference }}</small>
+                <p data-price="" amount="article.prixunitaireht" layout="row" layout-align="end center"></p>
+                <p>{{ article.description }}</p>
+            </md-card-content>
+            <md-card-actions layout="column" layout-align="start">
+                <md-input-container style="margin-right: 10px;">
+                    <label>{{"quantity" | translate}}</label>
+                    <md-select ng-model="size">
+                        <md-option ng-repeat="size in range(10) track by $index" value="{{$index + 1}}">{{$index + 1}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-button ng-click="addToCart(article.id, size)">{{"articleAdd" | translate}}</md-button>
+            </md-card-actions>
+        </md-card>
+
+    </article>
+</div>
