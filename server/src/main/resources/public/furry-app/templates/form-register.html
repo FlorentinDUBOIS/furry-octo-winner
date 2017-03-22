@@ -1,27 +1,52 @@
-<form name="registerForm">
-    <label for="nom">Nom: </label>
-    <input type="text" name="nom" ng-model="user.nom" required>
-    
-    <label for="prenom">Prénom: </label>
-    <input type="text" name="prenom" ng-model="user.prenom" required>
+<md-content flex layout="row" layout-align="center start">
+    <md-card flex-xs="100" flex-sm="100">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ 'register.title' | translate }}</span>
+            </md-card-title-text>
+        </md-card-title>
 
-    <label for="adresse">Adresse: </label>
-    <input type="text" name="adresse" ng-model="user.adresse" required>
+        <form name="registerForm">
+            <md-card-content>
 
-    <label for="codepostal">Code Postal: </label>
-    <input type="text" name="codepostal" ng-model="user.cp" required>
+                <md-input-container>
+                    <input mdInput placeholder="{{'register.name' | translate}}" name="nom" ng-model="user.nom" required>
+                </md-input-container>
 
-    <label for="ville">Ville: </label>
-    <input type="text" name="ville" ng-model="user.ville" required>
+                <md-input-container>
+                    <input mdInput placeholder="{{'register.firstname' | translate}}" name="prenom" ng-model="user.prenom" required>
+                </md-input-container>
+                <br/>
+                <md-input-container>
+                    <input mdInput placeholder="{{'register.address' | translate}}" name="adresse" ng-model="user.adresse" required>
+                </md-input-container>
+                <br/>
+                <md-input-container>
+                    <input mdInput type="number" placeholder="{{'register.postalCode' | translate}}" name="codepostal" ng-model="user.cp" required>
+                </md-input-container>
 
-    <label for="email">mél: </label>
-    <input type="email" name="email" ng-model="user.email" required>
-
-    <label for="password">Phrase de passe:</label>
-    <input type="password" name="password" ng-model="user.motdepasse" required pattern=".{10,}">
-    
-    <label for="passwordAgain">Phrase de passe:</label>
-    <input type="password" name="passwordAgain" ng-model="user.motdepasseAgain" required pattern=".{10,}">
-
-    <input type="submit"  ng-click="register()" value="Enregistrement" ng-disabled="!registerForm.$valid">
-</form>
+                <md-input-container>
+                    <input mdInput placeholder="{{'register.city' | translate}}" name="ville" ng-model="user.ville" required>
+                </md-input-container>
+                <br/>
+                <md-input-container>
+                    <input mdInput placeholder="{{'register.mail' | translate}}" name="email" ng-model="user.email" required>
+                </md-input-container>
+                <br/>
+                <md-input-container>
+                    <input mdInput type="password" placeholder="{{'register.password' | translate}}" name="password" ng-model="user.motdepasse" required>
+                </md-input-container>
+                <br/>
+                <md-input-container>
+                    <input mdInput type="password" placeholder="{{'register.password' | translate}}" name="passwordAgain" ng-model="user.motdepasseAgain" required>
+                </md-input-container>
+                <br/>
+                <md-card-actions flex layout="row" layout-align="end center">
+                    <md-content>
+                        <md-button class="md-raised md-primary" type="submit"  ng-click="register()" value="Enregistrement" ng-disabled="!registerForm.$valid">{{'register.register' | translate}}</md-button>
+                    </md-content>
+                </md-card-actions>
+            </md-card-content>
+        </form>
+    </md-card>
+</md-content>

@@ -1,18 +1,29 @@
-<form name="loginForm">
-    <h2>{{'loginTitle' | translate}}</h2>
-    <md-input-container>
-        <input mdInput placeholder="{{'contactMail' | translate}}" name="username" ng-model="user.email" required>
-    </md-input-container>
+<md-content flex layout="row" layout-align="center start">
+    <md-card flex-xs="100" flex-sm="100">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ 'login.title' | translate }}</span>
 
-    <md-input-container>
-        <input mdInput type="password" placeholder="{{'loginPassword' | translate}}" name="password" ng-model="user.motdepasse" required>
-    </md-input-container>
+            </md-card-title-text>
+        </md-card-title>
 
-    <md-content>
-        <md-button class="md-raised md-primary" type="submit" ng-click="logIn()" value="Connexion" ng-disabled="!loginForm.$valid">{{'login' | translate}}</md-button>
-        <md-button class="md-raised md-primary" ui-sref="registerForm()">{{'loginRegister' | translate}}</md-button>
-    </md-content>
+        <form name="loginForm">
+            <md-card-content flex layout="column">
+                <md-input-container>
+                    <input mdInput placeholder="{{'contact.email' | translate}}" name="username" ng-model="user.email" required>
+                </md-input-container>
 
-</form>
+                <md-input-container>
+                    <input mdInput type="password" placeholder="{{'login.password' | translate}}" name="password" ng-model="user.motdepasse" required>
+                </md-input-container>
 
-
+                <md-card-actions flex layout="row" layout-align="end center">
+                    <md-content>
+                        <md-button class="md-raised md-primary" type="submit" ng-click="logIn()" value="Connexion" ng-disabled="!loginForm.$valid">{{'login.login' | translate}}</md-button>
+                        <md-button class="md-raised md-primary" ui-sref="registerForm()">{{'login.register' | translate}}</md-button>
+                    </md-content>
+                </md-card-actions>
+            </md-card-content>
+        </form>
+    </md-card>
+</md-content>

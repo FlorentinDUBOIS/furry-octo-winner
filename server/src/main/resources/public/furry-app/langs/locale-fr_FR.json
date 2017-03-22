@@ -35,10 +35,25 @@
     }
   },
   "articleAdd": "Ajouter",
-  "quantity": "Quantité"
+  "quantity": "Quantité",
 
-  "loginPassword" : "Mot de passe",
-  "loginRegister" : "S'enregistrer",
-  "loginTitle" : "Identifiez-vous",
-  "login" : "Se connecter"
+  "login" : {
+    "password" : "Mot de passe",
+    "register" : "S'enregistrer",
+    "title" : "Identifiez-vous !",
+    "login" : "Se connecter"
+  },
+  "register" : {
+    "title" : "Enregistrer-vous !",
+    "name" : "Nom",
+    "firstname" : "Prénom",
+    "address" : "Adresse",
+    "postalCode" : "Code Postal",
+    "city" : "Ville",
+    "mail" : "Mél",
+    "password" : "Mot de passe",
+    "register" : "Enregistrement"
+  }
+
+
 }
