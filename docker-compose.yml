@@ -8,7 +8,6 @@ services:
     - 8081:8080
     volumes:
       - ./server:/opt/app
-      - ./server/build/resources/main/public:/opt/app/build/resources/main/public:ro
     links:
     - postgresql:db
   
@@ -19,12 +18,3 @@ services:
     - POSTGRES_USER=funnyApp
     - POSTGRES_PASSWORD=funnyApp
     - POSTGRES_DB=funnyApp
-
-  #auto-rebuild:
-  #  build: 
-  #    context: .
-  #    dockerfile: Dockerfile-rebuild
-  #  volumes:
-  #    - ./server:/opt/app
-  #  links:
-  #  - furry-octo-winner:app

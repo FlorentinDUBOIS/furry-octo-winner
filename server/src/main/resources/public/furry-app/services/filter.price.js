@@ -15,16 +15,18 @@
           let cur = $Prices.getUserCurrency()
 
           $Prices
-            .convertFast(scope.amount)
-            .then(function() { scope.finalPrice = newPrice })
-            .catch($log.error)
+          .convertFast(scope.amount)
+          .then((newPrice) => { 
+            scope.finalPrice = newPrice 
+          })
+          .catch($log.error)
 
-          scope.unit = currenciesSymbols[cur] || cur
+          scope.unit = CurrenciesSymbol[cur] || cur
         }
+        calcul()
 
         scope.$on('currencyChange', function() {
           $log.debug('Receive event currencyChange')
-
           calcul()
         })
       }
