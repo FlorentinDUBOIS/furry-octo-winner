@@ -6,7 +6,6 @@
       bindings: {
         articles: '<'
       },
-
       controller: articlesComponent
     })
 

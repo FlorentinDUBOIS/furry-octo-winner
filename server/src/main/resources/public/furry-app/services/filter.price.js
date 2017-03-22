@@ -9,7 +9,6 @@
       scope: {
         amount: '='
       },
-
       link
     }
 
