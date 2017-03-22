@@ -20,4 +20,9 @@
   "articleAdd": "Ajouter",
 
   "quantity": "Quantité"
+
+  "loginPassword" : "Mot de passe",
+  "loginRegister" : "S'enregistrer",
+  "loginTitle" : "Identifiez-vous",
+  "login" : "Se connecter"
 }
