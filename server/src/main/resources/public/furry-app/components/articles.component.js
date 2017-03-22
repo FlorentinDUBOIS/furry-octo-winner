@@ -1,30 +1,37 @@
-furryApp
-.component('articlesComponent', {
+(function () {
+  angular
+    .module('furryApp')
+    .component('articlesComponent', {
+      templateUrl: 'furry-app/templates/articles.html',
+      bindings: {
+        articles: '<'
+      },
 
-  bindings: { 
-    articles: '<' 
-  },
+      controller: articlesComponent
+    })
 
-  templateUrl: 'furry-app/templates/articles.html',
-           
-  controller: function($scope, $state, $Cart, $log) {
-      $scope.$watch('$ctrl.articles', (oValue, nValue) => {
-        this.articles = nValue;
+  function articlesComponent($scope, $state, $Cart, $log) {
+    $scope.$watch('$ctrl.articles', (oValue, nValue) => {
+      this.articles = nValue;
+    });
+
+    $log.info('Actual Cart :', $Cart.resumeCart());
+    $scope.showArticle = (articleId) => {
+      $log.info(`[state] go to article ${articleId}`);
+
+      $state.go('articleDetails', {
+        articleId
       });
-      $log.info('Actual Cart :', $Cart.resumeCart());
+    }
 
-      $scope.showArticle = (articleId) => {
-        console.log(`[state] go to article ${articleId}`);
-        $state.go('articleDetails', {
-          articleId
-        });
-      }
+    $scope.addToCart = function (articleId) {
+      $Cart.addArticle(articleId);
+    }
 
-      $scope.addToCart = (articleId) => {
-        $Cart.addArticle(articleId);
-      };
-      $scope.removeFromCart = (articleId) => {
-        $Cart.removeArticle(articleId);
-      }
+    $scope.removeFromCart = function (articleId) {
+      $Cart.removeArticle(articleId);
+    }
   }
-});
+
+  articlesComponent.$inject = ['$scope', '$state', '$Cart', '$log']
+} ())

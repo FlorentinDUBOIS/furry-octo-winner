@@ -20,7 +20,7 @@
               invalidCache = !invalidCache
               $timeout(function() {
                 invalidCache = !invalidCache
-              }, 10 * 60 * 1000 )
+              }, 10 * 60 * 1000)
 
               resolve()
             })

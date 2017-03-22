@@ -1,8 +1,10 @@
-furryApp.component('specialOfferComponent', {
-
-    bindings: {
+(function () {
+  angular
+    .module('furryApp')
+    .component('specialOfferComponent', {
+      templateUrl: 'furry-app/templates/special-offer.html',
+      bindings: {
         articles: '<'
-    },
-
-    templateUrl: 'furry-app/templates/special-offer.html'
-});
+      }
+    })
+} ())

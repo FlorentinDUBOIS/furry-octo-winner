@@ -1,26 +1,35 @@
-furryApp
-.component('orderCartComponent', {
+(function () {
+  angular
+    .module('furryApp')
+    .component('orderCartComponent', {
+      templateUrl: 'furry-app/templates/order-cart.html',
+      controller: orderCartComponent
+    })
 
-  templateUrl: 'furry-app/templates/order-cart.html',
-           
-  controller: function($scope, $state, $Cart) {
+    function orderCartComponent($scope, $state, $Cart) {
+      refreshCart();
 
-    let refreshCart = () => {
-      $scope.articles = Array.from($Cart.resumeCart());
-    }
-    refreshCart();
+      $scope.plus = function(articleId) {
+        $Cart.addArticle(articleId);
+        refreshCart();
+      }
 
-    $scope.plus = (articleId) => {
-      $Cart.addArticle(articleId);
-      refreshCart();
+      $scope.moins = function(articleId) {
+        $Cart.removeArticle(articleId);
+        refreshCart();
+      }
+
+      $scope.cartClear = function() {
+        $Cart.resetCart();
+        refreshCart();
+      }
+
+      //////////////
+
+      function refreshCart() {
+        $scope.articles = Array.from($Cart.resumeCart());
+      }
     }
-    $scope.moins = (articleId) => {
-      $Cart.removeArticle(articleId);
-      refreshCart();
-    }
-    $scope.cartClear = () => {
-      $Cart.resetCart();
-      refreshCart();
-    }
-  }
-});
+
+    orderCartComponent.$inject = ['$scope', '$state', '$Cart']
+} ())

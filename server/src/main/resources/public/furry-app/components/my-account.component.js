@@ -1,3 +1,7 @@
-furryApp.component('myAccountComponent', {
-    templateUrl: 'furry-app/templates/my-account.html'
-});
+(function () {
+  angular
+    .module('furryApp')
+    .component('myAccountComponent', {
+      templateUrl: 'furry-app/templates/my-account.html'
+    })
+} ())

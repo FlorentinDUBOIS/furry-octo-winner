@@ -1,24 +1,27 @@
-furryApp.config(
-  ($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider, languages) => {
+(function () {
+  angular
+    .module('furryApp')
+    .config(RouterConfig)
 
-  // I18n
-  $translateProvider
-  .useStaticFilesLoader({
-    prefix: 'furry-app/langs/locale-',
-    suffix: '.json'
-  })
-  .determinePreferredLanguage()
-  .fallbackLanguage('fr_FR')
-  .registerAvailableLanguageKeys(languages)
-  .useSanitizeValueStrategy('escape');
+  function RouterConfig($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider, languages) {
+    // I18n
+    $translateProvider
+      .useStaticFilesLoader({
+        prefix: 'furry-app/langs/locale-',
+        suffix: '.json'
+      })
+      .determinePreferredLanguage()
+      .fallbackLanguage('fr_FR')
+      .registerAvailableLanguageKeys(languages)
+      .useSanitizeValueStrategy('escape');
 
-  // Auth
-  $httpProvider.interceptors.push('authHttpInterceptor');
+    // Auth
+    $httpProvider.interceptors.push('authHttpInterceptor');
 
-  // Router
-  $resourceProvider.defaults.stripTrailingSlashes = false;
-  const STATES = [
-    {
+    // Router
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+
+    const states = [{
       name: 'registerForm',
       url: '/register',
       component: 'registerFormComponent'
@@ -31,27 +34,27 @@ furryApp.config(
       url: '/article',
       component: 'articlesComponent',
       resolve: {
-          articles: function ($Article) {
-              return $Article.query().$promise;
-          }
+        articles: ['$Article', function($Article) {
+          return $Article.query().$promise;
+        }]
       }
     }, {
       name: 'articleDetails',
       url: '/article/:articleId',
       component: 'articleDetailsComponent',
       resolve: {
-        article: function ($Article, $transition$) {
+        article: ['$Article', '$transition$', function ($Article, $transition$) {
           return $Article.get({
             articleId: $transition$.params().articleId
           }).$promise;
-        }
+        }]
       }
     },{
       name: 'orderCart',
       url: '/order/cart',
       component: 'orderCartComponent',
       data: {
-          authRequired: true
+        authRequired: true
       }
     }, {
       name: 'contact',
@@ -59,21 +62,20 @@ furryApp.config(
       component: 'contactComponent'
     }, {
       name: 'homePage',
-          url: '/',
-          component: 'homePageComponent'
-      }, {
-          name: 'specialOffer',
-          url: '/specialOffer',
-          component: 'specialOfferComponent'
-      }, {
-          name: 'myAccount',
-          url: '/myAccount',
-          component: 'myAccountComponent'
-      }
+      url: '/',
+      component: 'homePageComponent'
+    }, {
+      name: 'specialOffer',
+      url: '/specialOffer',
+      component: 'specialOfferComponent'
+    }, {
+      name: 'myAccount',
+      url: '/myAccount',
+      component: 'myAccountComponent'
+    }]
 
-  ];
-
-  for (let state of STATES) {
-    $stateProvider.state(state);
+    states.forEach(state => $stateProvider.state(state))
   }
-});
+
+  RouterConfig.$inject = ['$stateProvider', '$resourceProvider', '$translateProvider', '$uiRouterProvider', '$httpProvider', 'languages']
+} ())
