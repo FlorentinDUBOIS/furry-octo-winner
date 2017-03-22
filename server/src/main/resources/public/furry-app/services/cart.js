@@ -6,7 +6,7 @@
   function $Cart($log) {
     return {
       addArticle(articleId) {
-        $log.info(`Add to cart: ${ articleId }`)
+        $log.info(`Add to cart: ${articleId}`)
 
         let cart = loadExistingCart()
 
@@ -30,7 +30,7 @@
         if (cart.has(articleId)) {
           let articleCount = cart.get(articleId)
           if (articleCount > 1) {
-            cart.set(articleId, articleCount -1)
+            cart.set(articleId, articleCount - 1)
           } else {
             cart.delete(articleId)
           }
@@ -54,16 +54,16 @@
       count() {
         return Array
           .from(loadExistingCart())
-          .reduce((acc, val, i) => acc + val[1], 0)
+          .reduce((acc, val) => acc + val[1], 0)
       },
 
       /**
        * remove every entries of user cart
        */
       resetCart() {
-          $log.info('Cart is reseted')
+        $log.info('Cart is reseted')
 
-          localStorage.removeItem('clientCart')
+        localStorage.removeItem('clientCart')
       }
     }
 
@@ -90,4 +90,4 @@
   }
 
   $Cart.$inject = ['$log']
-} ())
+}())
