@@ -12,13 +12,29 @@
   "navbarLogin" : "Login/Register",
   "navbarCart": "Panier",
 
-  "contactMail" : "Mél" ,
-  "contactMessage" : "Message" ,
-  "contactSubject" : "Sujet" ,
-  "contactSendButton" : "Envoyer",
+  "contact": {
+    "header": "Contactez nous !",
+    "subheader": "Laissez nous votre message.",
+    "others": "Contactez nous !",
+    "paper": "Par courrier",
+    "social": "Via les réseaux sociaux.",
+    "email": "Mél",
+    "subject": "Sujet",
+    "message": "Message",
+    "send": "Envoyer",
+    "sent": "Message envoyé",
+    "network": {
+      "facebook": "Facebook",
+      "twitter": "Twitter"
+    },
 
+    "information": {
+      "header": "Coordonnées",
+      "street": "Cuirassé Bretagne, 29200 Brest, France",
+      "email": "yolo@swag.com"
+    }
+  },
   "articleAdd": "Ajouter",
-
   "quantity": "Quantité"
 
   "loginPassword" : "Mot de passe",

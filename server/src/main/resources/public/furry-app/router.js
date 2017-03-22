@@ -59,19 +59,19 @@
       }
     }, {
       name: 'contact',
-      url: '/contactUs',
+      url: '/contact-us',
       component: 'contactComponent'
     }, {
       name: 'homePage',
       url: '/',
       component: 'homePageComponent'
     }, {
-      name: 'specialOffer',
-      url: '/specialOffer',
+      name: 'special-offer',
+      url: '/special-offer',
       component: 'specialOfferComponent'
     }, {
       name: 'myAccount',
-      url: '/myAccount',
+      url: '/my-account',
       component: 'myAccountComponent'
     }]
 

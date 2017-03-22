@@ -1,37 +1,83 @@
-<h1>Contactez Nous !</h1>
+<md-content flex layout="row" layout-align="center start">
+  <md-card flex-xs="100" flex-sm="100">
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{ 'contact.others' | translate }}</span>
+        <span class="md-subhead">{{ 'contact.social' | translate }}</span>
+      </md-card-title-text>
+    </md-card-title>
 
-<form method="post" action="">
-    <table>
-        <tr>
-            <td>{{'contactMail' | translate}} :</td>
-            <td><input type="text" name="mail"></td>
-        </tr>
-        <tr>
-            <td>{{'contactSubject' | translate}} :</td>
-            <td><input type="text" name="subject"></td>
-        </tr>
-        <tr>
-            <td>{{'contactMessage' | translate}} :</td>
-            <td><textarea name="message"></textarea></td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="{{'contactSendButton' | translate}}"></td>
-        </tr>
-    </table>
-</form>
+    <md-card-content>
+      <md-list>
+        <md-list-item class="md-1-line">
+          <a href="" target="_blank">
+            <div class="md-list-item-text">
+              <p>{{ 'contact.network.facebook' | translate }}</p>
+            </div>
+          </a>
+        </md-list-item>
 
-<div>
-    <p>Autre moyen de nous contacter :</p>
-    <div>
-        <p>Sur nos résaux sociaux: </p>
-        <ul>
-            <li><a href="">Facebook</a></li>
-            <li><a href="">Twitter</a></li>
-        </ul>
-    </div>
-    <div>
-        <p>Notre Adresse : </p>
-        <p>Cuirassé Bretagne, 29200 Brest,France</p>
-        <p>yolo@swag.com</p>
-    </div>
-</div>
+        <md-list-item class="md-1-line">
+          <a href="" target="_blank">
+            <div class="md-list-item-text">
+              <p>{{ 'contact.network.twitter' | translate }}</p>
+            </div>
+          </a>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-subhead">{{ 'contact.paper' | translate }}</span>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-card-content>
+      <md-list>
+        <md-list-item class="md-3-line">
+          <div class="md-list-item-text">
+            <p>{{ 'contact.information.header' | translate }}</p>
+            <p>{{ 'contact.information.street' | translate }}</p>
+            <p>{{ 'contact.information.email' | translate }}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+
+
+  <form name="contact" ng-submit="send($event)">
+    <md-card flex-xs="100" flex-sm="100">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ 'contact.header' | translate }}</span>
+          <span class="md-subhead">{{ 'contact.subheader' | translate }}</span>
+        </md-card-title-text>
+      </md-card-title>
+
+      <md-card-content flex layout="column">
+        <md-input-container>
+          <label>{{ 'contact.email' | translate }}</label>
+          <input type="email" name="email" ng-model="$contact.email" required>
+        </md-input-container>
+
+        <md-input-container>
+          <label>{{ 'contact.subject' | translate }}</label>
+          <input type="text" name="subject" ng-model="$contact.subject" required>
+        </md-input-container>
+
+        <md-input-container>
+          <label>{{ 'contact.message' | translate }}</label>
+          <textarea name="message" ng-model="$contact.message" rows="5" required></textarea>
+        </md-input-container>
+      </md-card-content>
+
+      <md-card-actions flex layout="row" layout-align="end center">
+        <md-button type="submit">
+          {{ 'contact.send' | translate }}
+        </md-button>
+      </md-card-actions>
+    </md-card>
+  </form>
+</md-content>

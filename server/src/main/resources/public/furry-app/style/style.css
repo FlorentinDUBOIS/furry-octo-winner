@@ -8,56 +8,20 @@ md-menu-item>.md-button> .symbol{
     text-align: left;
 }
 
-/*.groupX {
-    font-size: 16px;
-    margin: 20px 0;
-    padding: 3px 15px 3px 15px;
-    color: rgb(49, 46, 46);
-    background-color: rgba(224, 224, 224, 0.96);
-    text-transform: none;
-    font-weight: 400;
-    min-width:100px;
+a {
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+    color: inherit;
 }
 
-.md-button.left {
-    border-radius: 10px 0 0 10px;
+* {
+    transition: all 0.2s;
 }
 
-.md-button.middle {
-    border-radius: 0;
-    border-left: 1px solid rgba(230, 230, 230, 0.96);
-    border-right: 1px solid rgba(230, 230, 230, 0.96);
+@media(min-width: 800px) {
+    form[name="contact"] {
+        min-width: 600px;
+    }
 }
-
-.md-button.right {
-    border-radius: 0 10px 10px 0;
-}
-
-.md-button:not([disabled]):hover {
-    background-color: rgba(193, 193, 193, 0.96);
-    color: rgba(44, 65, 164, 0.96);
-    transition: 0.3s;
-}
-
-#lang ul {
-    margin:0;
-    padding:0;
-    list-style-type:none;
-    text-align:center;
-}
-#lang li {
-    float:left;
-    margin:auto;
-    padding:0;
-    background-color:black;
-}
-#lang li a {
-    display:block;
-    width:100px;
-    color:white;
-    text-decoration:none;
-    padding:5px;
-}
-#lang li a:hover {
-    color:#FFD700;
-}*/
