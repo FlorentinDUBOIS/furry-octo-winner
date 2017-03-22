@@ -1,6 +1,6 @@
 <h1>Liste des produits</h1>
 <div class='md-padding' layout="row" layout-wrap>
-    <article ng-repeat="article in $ctrl.articles" flex-xs="100" flex-gt-xs="25" layout="column">
+    <article ng-repeat="article in $ctrl.articles" flex flex-xs="100" flex-sm="50" flex-gt-md="25" layout="column" layout-align="start center" layout-wrap>
         <md-card>
             <img ng-src="furry-app/img/product/example.png" class="md-card-image" alt="{{ article.nom }}" ng-click="showArticle(article.id)">
             <md-card-title>
