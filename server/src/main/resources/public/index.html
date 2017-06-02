@@ -10,8 +10,9 @@
 
     <title>Furry Octo Winner</title>
 
-    <link rel="stylesheet" type="text/css" href="furry-app/style/style.css" media="screen,projection" />
-    <link rel="stylesheet" type="text/css" href="furry-app/style/angular-material-min.css" media="screen,projection" />
+    <link rel="manifest"   type="application/json" href="manifest.json">
+    <link rel="stylesheet" type="text/css" href="furry-app/style/style.css" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="furry-app/style/angular-material-min.css" media="screen,projection">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500">
   </head>
@@ -68,6 +69,23 @@
         <ui-view></ui-view>
       </div>
     </md-content>
+
+    <!-- Imports service-worker -->
+    <script>
+      (function() {
+        const {host} = location
+        const disableForHosts = [
+          '127.0.0.1',
+          'localhost'
+        ]
+
+        if (!disableForHosts.includes(host)) {
+          if (ServiceWorker in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+          }
+        }
+      })()
+    </script>
 
     <!-- Imports Libraries -->
     <script src="libs/angular.js"></script>
