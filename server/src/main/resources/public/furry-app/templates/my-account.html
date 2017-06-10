@@ -1,1 +1,31 @@
-<h1>My account</h1>
+<div layout="column" layout-align="space-around center">
+  <div flex-gt-sm="50">
+    <h1>My account</h1>
+    <md-card md-theme-watch>
+
+        <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{ me.nom }} {{ me.prenom }}</span>
+            <span class="md-subhead">{{ me.email }}</span>
+        </md-card-title-text>
+        <md-card-title-media>
+            <div class="md-media-xl card-media">
+                <img class="md-card-image" ng-src="{{profil.thumbnailUrl}}" alt="profil">
+            </div>
+        </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+            <p ng-class="">Valide account:</p>
+            <p ng-class="">Blobked account: </p>
+        </md-card-content>
+        <!--md-card-actions layout="row" layout-align="end center">
+        <md-button>Action 1</md-button>
+        <md-button>Action 2</md-button>
+        </md-card-actions-->
+    </md-card>
+    <pre>
+        <code>{{ me | json}}</code>
+        <code>{{ profil | json}}</code>
+    </pre>
+    </div>
+</div>

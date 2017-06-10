@@ -57,12 +57,13 @@
 
     <md-content ng-controller="navbarCtrl">
       <md-nav-bar>
-        <md-nav-item ui-sref="homePage" md-nav-click="goto('homepage')" name="homepage">{{ 'navbarHome' | translate }}</md-nav-item>
-        <md-nav-item ui-sref="articleList" md-nav-click="goto('article-list')" name="article-list">{{ 'navbarNewProduct' | translate }}</md-nav-item>
-        <md-nav-item ui-sref="specialOffer" md-nav-click="goto('special-offer')" name="special-offer">{{ 'navbarSpecialOffer' | translate }}</md-nav-item>
-        <md-nav-item ui-sref="contact" md-nav-click="goto('contact')" name="contact">{{ 'navbarContact' | translate }}</md-nav-item>
+        <md-nav-item ui-sref="homePage" md-nav-sref="homepage">{{ 'navbarHome' | translate }}</md-nav-item>
+        <md-nav-item ui-sref="articleList" md-nav-sref="article-list">{{ 'navbarNewProduct' | translate }}</md-nav-item>
+        <md-nav-item ui-sref="specialOffer" md-nav-sref="special-offer">{{ 'navbarSpecialOffer' | translate }}</md-nav-item>
+        <md-nav-item ui-sref="contact" md-nav-sref="contact">{{ 'navbarContact' | translate }}</md-nav-item>
         <span flex></span>
-        <md-nav-item ui-sref="orderCart" md-nav-click="goto('order-cart')" name="cart">{{ 'navbarCart' | translate }} ({{ cartService.count() }})</md-nav-item>
+        <md-nav-item ui-sref="orderCart" md-nav-sref="order-cart">{{ 'navbarCart' | translate }} ({{ cartService.count() }})</md-nav-item>
+        <md-nav-item ui-sref="myAccount" md-nav-sref="myAccount">{{ 'navbarMyAccount' | translate }}</md-nav-item>
       </md-nav-bar>
 
       <div class="ext-content">
@@ -140,6 +141,7 @@
     <script src="furry-app/components/home-page.component.js"></script>
     <script src="furry-app/components/special-offer.component.js"></script>
     <script src="furry-app/components/search-bar.component.js"></script>
+    <script src="furry-app/components/my-account.component.js"></script>
 
     <!-- Imports Controllers -->
     <script src="furry-app/controllers/currency.controller.js"></script>

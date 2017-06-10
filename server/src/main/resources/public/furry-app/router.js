@@ -3,7 +3,16 @@
     .module('furryApp')
     .config(RouterConfig)
 
-  function RouterConfig($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider, $urlRouterProvider, languages) {
+  function RouterConfig($stateProvider, $resourceProvider, $translateProvider, $uiRouterProvider, $httpProvider, $urlRouterProvider, languages, $sceDelegateProvider) {
+
+    // Trusted resources
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Allow same origin resource loads.
+      'self',
+      // Allow loading from our assets domain.  Notice the difference between * and **.
+      'https://www.gravatar.com/**'
+    ]);
+
     // I18n
     $translateProvider
       .useStaticFilesLoader({
@@ -22,7 +31,8 @@
     $resourceProvider.defaults.stripTrailingSlashes = false;
     $urlRouterProvider.when('', '/')
 
-    const states = [{
+    const states = [
+    {
       name: 'registerForm',
       url: '/register',
       component: 'registerFormComponent'
@@ -72,11 +82,17 @@
     }, {
       name: 'myAccount',
       url: '/my-account',
-      component: 'myAccountComponent'
+      component: 'myAccountComponent',
+      resolve: {
+        authorize: ($User, $state) => {
+          if (!$User.isLoggedIn()) {
+            $state.go('loginForm')
+          }
+        }
+      }
     }]
-
     states.forEach(state => $stateProvider.state(state))
   }
 
-  RouterConfig.$inject = ['$stateProvider', '$resourceProvider', '$translateProvider', '$uiRouterProvider', '$httpProvider', '$urlRouterProvider', 'languages']
+  RouterConfig.$inject = ['$stateProvider', '$resourceProvider', '$translateProvider', '$uiRouterProvider', '$httpProvider', '$urlRouterProvider', 'languages', '$sceDelegateProvider']
 } ())

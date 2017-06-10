@@ -1,5 +1,5 @@
 (function() {
   angular
     .module('furryApp')
-    .constant('API', 'http://127.0.0.1:8080')
+    .constant('API', 'http://127.0.0.1:8081')
 } ())
